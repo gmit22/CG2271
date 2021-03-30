@@ -32,7 +32,7 @@ void led_green_thread(void *argument) {
 		osDelay(1000);
 		//delay(0x80000);
 		
-		osMutexRelease(myMutex);
+		//osMutexRelease(myMutex);
 	}
 }
 
