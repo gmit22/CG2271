@@ -41,7 +41,17 @@ void offFrontLED(void);
 
 void offLEDModules(void);
 
+void flashRED_Moving(void);
+
+void flashRED_Stationery(void);
+
 void runningGREEN_Moving(int);
+
+void flashGREEN_Twice(void);
+
+void solidGREEN_Stationery(void);
+
+
 
 
 #endif
