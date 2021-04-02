@@ -26,6 +26,9 @@
 //uint8_t rx_data;
 char isMove = 0;
 
+//mySemaphores
+osSemaphoreId_t brainSem;
+osSemaphoreId_t moveSem;
 
 void bluetoothConnected() {
 	flashGREEN_Twice();
@@ -76,6 +79,28 @@ void tFrontLED(void *arguement) {
 	}
 }
 
+void tBrainThread (void *argument) {
+	for (;;) {
+		osSemaphoreAcquire(brainSem, osWaitForever);
+		
+		switch(userSignal) {
+			case NORTH:
+			case SOUTH:
+			case EAST:
+			case WEST:
+			case NORTH_EAST:
+			case SOUTH_EAST:
+			case SOUTH_WEST:
+			case NORTH_WEST:
+			case STOP:
+				osSemaphoreRelease(moveSem);
+				break;
+			default:
+				break;
+		}
+	}
+}
+
 
 int main (void) {
  
@@ -87,6 +112,10 @@ int main (void) {
 	offLEDModules();
  
   osKernelInitialize();                 // Initialize CMSIS-RTOS
+	
+	//Initialize Semaphores
+	brainSem = osSemaphoreNew(1, 0, NULL);
+	moveSem = osSemaphoreNew(1, 0, NULL);
 	
 	//Wair for bluetooth connectivity 
 	while (userSignal != CONNECTION);
