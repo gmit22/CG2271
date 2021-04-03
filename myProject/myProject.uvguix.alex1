@@ -3682,9 +3682,9 @@
       </Doc>
       <Doc>
         <Name>.\main.c</Name>
-        <ColumnNumber>22</ColumnNumber>
-        <TopLine>50</TopLine>
-        <CurrentLine>112</CurrentLine>
+        <ColumnNumber>19</ColumnNumber>
+        <TopLine>86</TopLine>
+        <CurrentLine>100</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>

@@ -51,12 +51,10 @@ char isMoving() {
 	}
 	return isMove;	
 }
- 
-/*----------------------------------------------------------------------------
- * Application main thread
- *---------------------------------------------------------------------------*/
 
-// Thread for rear RED LEDs
+/*----------------------------------------------------------------------------
+ * Application rear RED LEDs
+ *---------------------------------------------------------------------------*/
 void tRearLED(void *arguement) {
 	
 	for (;;) {
@@ -68,7 +66,9 @@ void tRearLED(void *arguement) {
 	}	
 }
 
-// Thread for front GREEN LEDs
+/*----------------------------------------------------------------------------
+ * Application front GREEN LEDs
+ *---------------------------------------------------------------------------*/
 void tFrontLED(void *arguement) {
 	
 	int ledIndex = 0;
@@ -83,6 +83,9 @@ void tFrontLED(void *arguement) {
 	}
 }
 
+/*----------------------------------------------------------------------------
+ * Application tMotorThread
+ *---------------------------------------------------------------------------*/
 void tMotorThread (void *argument) {
 	for(;;) {
 		osSemaphoreAcquire(moveSem, osWaitForever);
@@ -115,6 +118,9 @@ void tMotorThread (void *argument) {
 	}
 }
 
+/*----------------------------------------------------------------------------
+ * Application tBrainThread
+ *---------------------------------------------------------------------------*/
 void tBrainThread (void *argument) {
 	for (;;) {
 		osSemaphoreAcquire(brainSem, osWaitForever);
