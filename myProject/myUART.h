@@ -6,6 +6,7 @@
 #include "RTE_Components.h"
 #include  CMSIS_device_header
 #include "cmsis_os2.h"
+#include "myBasic.h"
 
 #define BAUD_RATE 9600
 #define UART_RX_PORTE23 23

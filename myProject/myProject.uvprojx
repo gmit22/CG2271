@@ -412,6 +412,26 @@
               <FileType>1</FileType>
               <FilePath>.\myPWM.c</FilePath>
             </File>
+            <File>
+              <FileName>myPWM.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\myPWM.h</FilePath>
+            </File>
+            <File>
+              <FileName>myBasic.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\myBasic.h</FilePath>
+            </File>
+            <File>
+              <FileName>myBasic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\myBasic.c</FilePath>
+            </File>
+            <File>
+              <FileName>myMotor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\myMotor.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

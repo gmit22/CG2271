@@ -39,12 +39,16 @@ void setupUART2(uint32_t baud_rate) {
 
 void UART2_IRQHandler() {
 	
-	//NVIC_ClearPendingIRQ(UART2_IRQn);
+	NVIC_ClearPendingIRQ(UART2_IRQn);
+	
+	osSemaphoreRelease(brainSem);
 	
 	if (UART2->S1 & UART_S1_RDRF_MASK) {
 	// received a character
 		userSignal = UART2->D;
-	} 
+	}
+	
+	//osSemaphoreRelease(brainSem);	//need to release one more brainSem to go into default case to stop?
 	/*
 	if (UART2->S1 & (UART_S1_OR_MASK | UART_S1_NF_MASK | UART_S1_FE_MASK |
 					UART_S1_PF_MASK)) {

@@ -1,11 +1,6 @@
-#include "MKL25Z4.h"
+#include "myPWM.h"
 
-#define PTB0_Pin 0
-#define PTB1_Pin 1
-#define PTB2_Pin 2
-#define PTB3_Pin 3
-
-void initPWM(void) {
+void initPWM() {
 	
 	//Enable Clock Gating for PORTB
 	SIM_SCGC5 |= SIM_SCGC5_PORTB_MASK;

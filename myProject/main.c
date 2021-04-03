@@ -5,8 +5,11 @@
 #include "RTE_Components.h"
 #include  CMSIS_device_header
 #include "cmsis_os2.h"
+#include "myPWM.h"
 #include "myLED.h"
 #include "myUART.h"
+#include "myBasic.h"
+#include "myMotor.h"
 
 #define NORTH 1
 #define SOUTH 2
@@ -30,9 +33,6 @@ const osThreadAttr_t maxPriority = {
 	.priority = osPriorityRealtime
 };
 
-//mySemaphores
-osSemaphoreId_t brainSem;
-osSemaphoreId_t moveSem;
 
 void bluetoothConnected() {
 	flashGREEN_Twice();
@@ -83,6 +83,38 @@ void tFrontLED(void *arguement) {
 	}
 }
 
+void tMotorThread (void *argument) {
+	for(;;) {
+		osSemaphoreAcquire(moveSem, osWaitForever);
+		switch(userSignal) {
+			case NORTH:
+				forward();
+				break;
+			case SOUTH:
+				reverse();
+				break;
+			case EAST:
+				turnLeft();
+				break;
+			case WEST:
+				turnRight();
+				break;
+			case NORTH_EAST:
+				rightForward();
+				break;
+			case SOUTH_EAST:
+				rightReverse();
+				break;
+			case SOUTH_WEST:
+				leftReverse();
+				break;
+			case NORTH_WEST:
+				leftForward();
+				break;
+		}
+	}
+}
+
 void tBrainThread (void *argument) {
 	for (;;) {
 		osSemaphoreAcquire(brainSem, osWaitForever);
@@ -96,10 +128,10 @@ void tBrainThread (void *argument) {
 			case SOUTH_EAST:
 			case SOUTH_WEST:
 			case NORTH_WEST:
-			case STOP:
 				osSemaphoreRelease(moveSem);
 				break;
 			default:
+				stop();
 				break;
 		}
 	}
@@ -113,6 +145,7 @@ int main (void) {
   
 	setupUART2(BAUD_RATE);
 	initLED();
+	initPWM();
 	offLEDModules();
  
   osKernelInitialize();                 // Initialize CMSIS-RTOS
