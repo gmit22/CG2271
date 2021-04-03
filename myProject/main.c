@@ -26,6 +26,10 @@
 //uint8_t rx_data;
 char isMove = 0;
 
+const osThreadAttr_t maxPriority = {
+	.priority = osPriorityRealtime
+};
+
 //mySemaphores
 osSemaphoreId_t brainSem;
 osSemaphoreId_t moveSem;
@@ -121,7 +125,9 @@ int main (void) {
 	while (userSignal != CONNECTION);
 	bluetoothConnected();
 	
-  //osThreadNew(app_main, NULL, NULL);    // Create application main thread
+	//osThreadNew(tBrainThread, &maxPriority);
+  //osThreadNew(tRearLED, NULL, NULL);
+	//osThreadNew(tFrontLED, NULL, NULL);
   osKernelStart();                      // Start thread execution
   for (;;) {}
 }

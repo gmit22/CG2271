@@ -402,6 +402,16 @@
               <FileType>5</FileType>
               <FilePath>.\myUART.h</FilePath>
             </File>
+            <File>
+              <FileName>myMotor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\myMotor.c</FilePath>
+            </File>
+            <File>
+              <FileName>myPWM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\myPWM.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
