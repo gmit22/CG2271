@@ -38,6 +38,7 @@ void bluetoothConnected() {
 	flashGREEN_Twice();
 	userSignal = STOP;
 	//Code to play a sound when bluetooth is connected to the Freedom Board.
+	
 }
 
 //Check and update flags if the device is in moving state
@@ -114,6 +115,9 @@ void tMotorThread (void *argument) {
 			case NORTH_WEST:
 				leftForward();
 				break;
+			default:
+				stop();
+				userSignal = STOP;
 		}
 	}
 }
@@ -134,10 +138,11 @@ void tBrainThread (void *argument) {
 			case SOUTH_EAST:
 			case SOUTH_WEST:
 			case NORTH_WEST:
+			case STOP:
 				osSemaphoreRelease(moveSem);
 				break;
 			default:
-				stop();
+				//stop();
 				break;
 		}
 	}
@@ -151,7 +156,7 @@ int main (void) {
   
 	setupUART2(BAUD_RATE);
 	initLED();
-	initPWM();
+	initPWM();  //Can please check if this PWM is for the motors or the sound?
 	offLEDModules();
  
   osKernelInitialize();                 // Initialize CMSIS-RTOS
