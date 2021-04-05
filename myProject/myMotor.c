@@ -34,16 +34,16 @@ void turnLeft() {
 	TPM1->MOD = 7500;
 	TPM2->MOD = 7500;
 	
-	TPM1_C0V = ACTIVE/4; //TPM1_CH0 left reverse
-	TPM2_C1V = ACTIVE/4; //TPM2_CH1 right forward
+	TPM1_C0V = ACTIVE/2; //TPM1_CH0 left reverse
+	TPM2_C1V = ACTIVE/2; //TPM2_CH1 right forward
 }
 
 void turnRight() {
 	TPM1->MOD = 7500;
 	TPM2->MOD = 7500;
 	
-	TPM1_C1V = ACTIVE/4; //TPM1_CH1 left forward
-	TPM2_C0V = ACTIVE/4; //TPM2_CH0 right reverse
+	TPM1_C1V = ACTIVE/2; //TPM1_CH1 left forward
+	TPM2_C0V = ACTIVE/2; //TPM2_CH0 right reverse
 }
 
 void rightForward() {

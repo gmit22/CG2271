@@ -37,7 +37,7 @@ void initPWM() {
 	TPM1->SC &= ~(TPM_SC_CPWMS_MASK);
 	
 	TPM2->SC &= ~((TPM_SC_CMOD_MASK) | (TPM_SC_PS_MASK));
-	TPM2->SC |= (TPM_SC_CMOD(1) | TPM_SC_PS(7));
+	TPM2->SC |= (TPM_SC_CMOD(1) | TPM_SC_PS(7)); 
 	TPM2->SC &= ~(TPM_SC_CPWMS_MASK);
 	
 	//Enable PWM on TPM1 Channel 0 -> PTB0
