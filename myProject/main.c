@@ -10,6 +10,7 @@
 #include "myUART.h"
 #include "myBasic.h"
 #include "myMotor.h"
+#include "mySound.h"
 
 #define NORTH 1
 #define SOUTH 2
@@ -45,7 +46,7 @@ void bluetoothConnected() {
 	delay(1000);
 	userSignal = STOP;
 	//Code to play a sound when bluetooth is connected to the Freedom Board.
-	
+	playConnectSong(); 
 }
 
 //Check and update flags if the device is in moving state
@@ -58,6 +59,17 @@ char isMoving() {
 					isMove = 1;
 	}
 	return isMove;	
+}
+
+/*----------------------------------------------------------------------------
+ * Application tAudio 
+ *---------------------------------------------------------------------------*/
+void tAudio(void *arguement) {
+	
+	for (;;) {
+		while (userSignal != END) {playRaceSong();};
+		playEndSong(); 
+	}	
 }
 
 /*----------------------------------------------------------------------------
@@ -180,6 +192,7 @@ int main (void) {
 	osThreadNew(tMotorThread, NULL, &aboveNormPriority);
   //osThreadNew(tRearLED, NULL, NULL);
 	osThreadNew(tFrontLED, NULL, NULL);
+	osThreadNew(tAudio, NULL, NULL);
 	
   osKernelStart();                      // Start thread execution
   for (;;) {}

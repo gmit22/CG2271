@@ -1,14 +1,11 @@
-#ifndef AUDIO_H
-#define AUDIO_H
+#ifndef mySound_H
+#define mySound_H
 #include "MKL25Z4.h"                    // Device header
-#include <math.h>
-#include "RTE_Components.h"
-#include  CMSIS_device_header
-#include "cmsis_os2.h"
+#include "myBasic.h"
+#include "myPWM.h"
 
-
-extern volatile uint8_t connect, end;
-
+#define PTD0_Pin 0
+#define PTD1_Pin 1
 #define NOTE_CNT 25
 #define TO_MOD(x) 375000/(x)
 
@@ -105,18 +102,9 @@ extern volatile uint8_t connect, end;
 #define NOTE_DS8 4978
 #define REST 0
 
-#define STARWARS_PLAY(x) (x*5/9)
-#define STARWARS_PAUSE(x) (x*25/81)
-#define ENDSONG_PLAY(x) (x*6)
-#define ENDSONG_PAUSE(x) (x*20/3)
-
-// Macros for cases of "The End" and Connection
-#define CHANGE_VAR 0xFF
-
-uint8_t dutyCycle(int, int);
+void playConnectSong(void);
+void playRaceSong(void);
 void playEndSong(void);
-void playStarWars(void);
-void delay(uint32_t);
 void delay100x(uint32_t);
 
 
