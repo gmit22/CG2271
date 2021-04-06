@@ -170,13 +170,14 @@ void tBrainThread (void *argument) {
 
 int main (void) {
  
-  // System Initialization  SystemCoreClockUpdate();
-  
+  //System Initialization 
+	
+	SystemCoreClockUpdate();
 	setupUART2(BAUD_RATE);
 	initLED();
 	initPWM();  //Can please check if this PWM is for the motors or the sound?
 	offLEDModules();
-	//turnRight();
+	turnRight();
 	//forward();
   osKernelInitialize();                 // Initialize CMSIS-RTOS
 	

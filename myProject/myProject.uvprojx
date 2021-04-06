@@ -432,6 +432,16 @@
               <FileType>5</FileType>
               <FilePath>.\myMotor.h</FilePath>
             </File>
+            <File>
+              <FileName>mySound.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\mySound.h</FilePath>
+            </File>
+            <File>
+              <FileName>mySound.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\mySound.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -3,7 +3,9 @@
 void initPWM() {
 	
 	//Enable Clock Gating for PORTB
-	SIM_SCGC5 |= SIM_SCGC5_PORTB_MASK;
+	
+	SIM->SCGC5 |= SIM_SCGC5_PORTD_MASK;
+	SIM->SCGC5 |= SIM_SCGC5_PORTB_MASK;
 	
 	//Configure mode 3 for pin PWM generation
 	//Left Motor
@@ -25,19 +27,16 @@ void initPWM() {
   PORTD->PCR[PTD0_Pin] |= PORT_PCR_MUX(4);
   PORTD->PCR[PTD1_Pin] &= ~PORT_PCR_MUX_MASK;
   PORTD->PCR[PTD1_Pin] |= PORT_PCR_MUX(4);
-
 	
-	//Enable Clock Gating for Timer1 & Timer2
-	SIM->SCGC6 = (SIM_SCGC6_TPM1_MASK | SIM_SCGC6_TPM2_MASK);
-	
-	//Enable clock gating for Timer0
-  SIM->SCGC6 = (SIM_SCGC6_TPM0_MASK);
-	
+	//Enable Clock Gating for Timer1 & Timer2 & Timer0
+	SIM->SCGC6 = (SIM_SCGC6_TPM1_MASK | SIM_SCGC6_TPM2_MASK | SIM_SCGC6_TPM0_MASK);
+  
 	//Select clock for TPM module
 	SIM->SOPT2 &= ~SIM_SOPT2_TPMSRC_MASK;
 	SIM->SOPT2 |= SIM_SOPT2_TPMSRC(1);
 	
 	//Set Modulo value 48000000 / 128 = 375000 / 7500 = 50 Hz
+	TPM0->MOD = 7500;
 	TPM1->MOD = 7500;
 	TPM2->MOD = 7500;
 	
