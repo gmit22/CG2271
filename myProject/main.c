@@ -34,10 +34,18 @@ const osThreadAttr_t maxPriority = {
 };
 
 
+const osThreadAttr_t aboveNormPriority = {
+	.priority = osPriorityAboveNormal
+};
+
+
+
 void bluetoothConnected() {
 	flashGREEN_Twice();
+	delay(1000);
 	userSignal = STOP;
 	//Code to play a sound when bluetooth is connected to the Freedom Board.
+	
 }
 
 //Check and update flags if the device is in moving state
@@ -114,6 +122,9 @@ void tMotorThread (void *argument) {
 			case NORTH_WEST:
 				leftForward();
 				break;
+			default:
+				stop();
+				userSignal = STOP;
 		}
 	}
 }
@@ -134,10 +145,11 @@ void tBrainThread (void *argument) {
 			case SOUTH_EAST:
 			case SOUTH_WEST:
 			case NORTH_WEST:
+			case STOP:
 				osSemaphoreRelease(moveSem);
 				break;
 			default:
-				stop();
+				//stop();
 				break;
 		}
 	}
@@ -146,14 +158,14 @@ void tBrainThread (void *argument) {
 
 int main (void) {
  
-  // System Initialization
-  SystemCoreClockUpdate();
+  // System Initialization  SystemCoreClockUpdate();
   
 	setupUART2(BAUD_RATE);
 	initLED();
-	initPWM();
+	initPWM();  //Can please check if this PWM is for the motors or the sound?
 	offLEDModules();
- 
+	//turnRight();
+	//forward();
   osKernelInitialize();                 // Initialize CMSIS-RTOS
 	
 	//Initialize Semaphores
@@ -164,9 +176,11 @@ int main (void) {
 	while (userSignal != CONNECTION);
 	bluetoothConnected();
 	
-	//osThreadNew(tBrainThread, &maxPriority);
+	osThreadNew(tBrainThread, NULL, &maxPriority);
+	osThreadNew(tMotorThread, NULL, &aboveNormPriority);
   //osThreadNew(tRearLED, NULL, NULL);
-	//osThreadNew(tFrontLED, NULL, NULL);
+	osThreadNew(tFrontLED, NULL, NULL);
+	
   osKernelStart();                      // Start thread execution
   for (;;) {}
 }

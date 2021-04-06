@@ -25,7 +25,7 @@
 
 //Delay for running GREEN forward LED
 #define DELAY_RUN 500 //milliseconds
-#define DELAY_FLASH 250 //milliseconds
+#define DELAY_FLASH 160000 //milliseconds
 
 
 // LED starts blinking from PTE5 in line to PTB8
