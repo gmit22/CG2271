@@ -1576,33 +1576,33 @@ Image Symbol Table
     i.os_kernel_is_active                    0x00002c00   Section        0  rtx_lib.o(i.os_kernel_is_active)
     os_kernel_is_active                      0x00002c01   Thumb Code    30  rtx_lib.o(i.os_kernel_is_active)
     i.playConnectSong                        0x00002c24   Section        0  mysound.o(i.playConnectSong)
-    i.playEndSong                            0x00002cf4   Section        0  mysound.o(i.playEndSong)
-    i.playRaceSong                           0x00002dc8   Section        0  mysound.o(i.playRaceSong)
-    i.reverse                                0x00002e30   Section        0  mymotor.o(i.reverse)
-    i.rightForward                           0x00002e54   Section        0  mymotor.o(i.rightForward)
-    i.rightReverse                           0x00002e78   Section        0  mymotor.o(i.rightReverse)
-    i.runningGREEN_Moving                    0x00002e9c   Section        0  myled.o(i.runningGREEN_Moving)
-    i.setupUART2                             0x00002f14   Section        0  myuart.o(i.setupUART2)
-    i.solidGREEN_Stationery                  0x00002fd0   Section        0  myled.o(i.solidGREEN_Stationery)
-    i.stop                                   0x00002ff4   Section        0  mymotor.o(i.stop)
-    i.tAudio                                 0x0000301c   Section        0  main.o(i.tAudio)
-    i.tBrainThread                           0x00003038   Section        0  main.o(i.tBrainThread)
-    i.tFrontLED                              0x00003088   Section        0  main.o(i.tFrontLED)
-    i.tMotorThread                           0x000030b0   Section        0  main.o(i.tMotorThread)
-    i.turnLeft                               0x0000311c   Section        0  mymotor.o(i.turnLeft)
-    i.turnRight                              0x00003140   Section        0  mymotor.o(i.turnRight)
-    .constdata                               0x00003164   Section       72  main.o(.constdata)
-    x$fpl$usenofp                            0x00003164   Section        0  usenofp.o(x$fpl$usenofp)
-    .constdata                               0x000031ac   Section      100  rtx_lib.o(.constdata)
-    os_idle_thread_attr                      0x000031ac   Data          36  rtx_lib.o(.constdata)
-    os_timer_thread_attr                     0x000031d0   Data          36  rtx_lib.o(.constdata)
-    os_timer_mq_attr                         0x000031f4   Data          24  rtx_lib.o(.constdata)
-    .constdata                               0x00003210   Section        1  irq_cm0.o(.constdata)
-    .rodata                                  0x00003214   Section      160  rtx_lib.o(.rodata)
-    __tagsym$$used                           0x00003214   Number         0  rtx_lib.o(.rodata)
-    __tagsym$$used                           0x0000327c   Number         0  rtx_lib.o(.rodata)
-    [Anonymous Symbol]                       0x000032b4   Section        0  rtx_kernel.o(.rodata.str1.4)
-    .L.str                                   0x000032b4   Data          11  rtx_kernel.o(.rodata.str1.4)
+    i.playEndSong                            0x00002cf8   Section        0  mysound.o(i.playEndSong)
+    i.playRaceSong                           0x00002dcc   Section        0  mysound.o(i.playRaceSong)
+    i.reverse                                0x00002e34   Section        0  mymotor.o(i.reverse)
+    i.rightForward                           0x00002e58   Section        0  mymotor.o(i.rightForward)
+    i.rightReverse                           0x00002e7c   Section        0  mymotor.o(i.rightReverse)
+    i.runningGREEN_Moving                    0x00002ea0   Section        0  myled.o(i.runningGREEN_Moving)
+    i.setupUART2                             0x00002f18   Section        0  myuart.o(i.setupUART2)
+    i.solidGREEN_Stationery                  0x00002fd4   Section        0  myled.o(i.solidGREEN_Stationery)
+    i.stop                                   0x00002ff8   Section        0  mymotor.o(i.stop)
+    i.tAudio                                 0x00003020   Section        0  main.o(i.tAudio)
+    i.tBrainThread                           0x0000303c   Section        0  main.o(i.tBrainThread)
+    i.tFrontLED                              0x0000308c   Section        0  main.o(i.tFrontLED)
+    i.tMotorThread                           0x000030b4   Section        0  main.o(i.tMotorThread)
+    i.turnLeft                               0x00003120   Section        0  mymotor.o(i.turnLeft)
+    i.turnRight                              0x00003144   Section        0  mymotor.o(i.turnRight)
+    .constdata                               0x00003168   Section       72  main.o(.constdata)
+    x$fpl$usenofp                            0x00003168   Section        0  usenofp.o(x$fpl$usenofp)
+    .constdata                               0x000031b0   Section      100  rtx_lib.o(.constdata)
+    os_idle_thread_attr                      0x000031b0   Data          36  rtx_lib.o(.constdata)
+    os_timer_thread_attr                     0x000031d4   Data          36  rtx_lib.o(.constdata)
+    os_timer_mq_attr                         0x000031f8   Data          24  rtx_lib.o(.constdata)
+    .constdata                               0x00003214   Section        1  irq_cm0.o(.constdata)
+    .rodata                                  0x00003218   Section      160  rtx_lib.o(.rodata)
+    __tagsym$$used                           0x00003218   Number         0  rtx_lib.o(.rodata)
+    __tagsym$$used                           0x00003280   Number         0  rtx_lib.o(.rodata)
+    [Anonymous Symbol]                       0x000032b8   Section        0  rtx_kernel.o(.rodata.str1.4)
+    .L.str                                   0x000032b8   Data          11  rtx_kernel.o(.rodata.str1.4)
     .bss.os                                  0x1ffff000   Section     4160  rtx_lib.o(.bss.os)
     os_mem                                   0x1ffff000   Data        4096  rtx_lib.o(.bss.os)
     os_isr_queue                             0x20000000   Data          64  rtx_lib.o(.bss.os)
@@ -1879,31 +1879,31 @@ Image Symbol Table
     offRearLED                               0x00002bc9   Thumb Code    14  myled.o(i.offRearLED)
     osRtxErrorNotify                         0x00002bdd   Thumb Code    32  rtx_config.o(i.osRtxErrorNotify)
     osRtxIdleThread                          0x00002bfd   Thumb Code     4  rtx_config.o(i.osRtxIdleThread)
-    playConnectSong                          0x00002c25   Thumb Code   184  mysound.o(i.playConnectSong)
-    playEndSong                              0x00002cf5   Thumb Code   186  mysound.o(i.playEndSong)
-    playRaceSong                             0x00002dc9   Thumb Code    92  mysound.o(i.playRaceSong)
-    reverse                                  0x00002e31   Thumb Code    22  mymotor.o(i.reverse)
-    rightForward                             0x00002e55   Thumb Code    24  mymotor.o(i.rightForward)
-    rightReverse                             0x00002e79   Thumb Code    24  mymotor.o(i.rightReverse)
-    runningGREEN_Moving                      0x00002e9d   Thumb Code   112  myled.o(i.runningGREEN_Moving)
-    setupUART2                               0x00002f15   Thumb Code   168  myuart.o(i.setupUART2)
-    solidGREEN_Stationery                    0x00002fd1   Thumb Code    32  myled.o(i.solidGREEN_Stationery)
-    stop                                     0x00002ff5   Thumb Code    30  mymotor.o(i.stop)
-    tAudio                                   0x0000301d   Thumb Code    22  main.o(i.tAudio)
-    tBrainThread                             0x00003039   Thumb Code    66  main.o(i.tBrainThread)
-    tFrontLED                                0x00003089   Thumb Code    40  main.o(i.tFrontLED)
-    tMotorThread                             0x000030b1   Thumb Code    98  main.o(i.tMotorThread)
-    turnLeft                                 0x0000311d   Thumb Code    22  mymotor.o(i.turnLeft)
-    turnRight                                0x00003141   Thumb Code    22  mymotor.o(i.turnRight)
-    __I$use$fp                               0x00003164   Number         0  usenofp.o(x$fpl$usenofp)
-    maxPriority                              0x00003164   Data          36  main.o(.constdata)
-    aboveNormPriority                        0x00003188   Data          36  main.o(.constdata)
-    osRtxUserSVC                             0x0000320c   Data           4  rtx_lib.o(.constdata)
-    irqRtxLib                                0x00003210   Data           1  irq_cm0.o(.constdata)
-    osRtxConfig                              0x00003214   Data         104  rtx_lib.o(.rodata)
-    os_cb_sections                           0x0000327c   Data          56  rtx_lib.o(.rodata)
-    Region$$Table$$Base                      0x000032c0   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x000032e0   Number         0  anon$$obj.o(Region$$Table)
+    playConnectSong                          0x00002c25   Thumb Code   186  mysound.o(i.playConnectSong)
+    playEndSong                              0x00002cf9   Thumb Code   186  mysound.o(i.playEndSong)
+    playRaceSong                             0x00002dcd   Thumb Code    90  mysound.o(i.playRaceSong)
+    reverse                                  0x00002e35   Thumb Code    22  mymotor.o(i.reverse)
+    rightForward                             0x00002e59   Thumb Code    24  mymotor.o(i.rightForward)
+    rightReverse                             0x00002e7d   Thumb Code    24  mymotor.o(i.rightReverse)
+    runningGREEN_Moving                      0x00002ea1   Thumb Code   112  myled.o(i.runningGREEN_Moving)
+    setupUART2                               0x00002f19   Thumb Code   168  myuart.o(i.setupUART2)
+    solidGREEN_Stationery                    0x00002fd5   Thumb Code    32  myled.o(i.solidGREEN_Stationery)
+    stop                                     0x00002ff9   Thumb Code    30  mymotor.o(i.stop)
+    tAudio                                   0x00003021   Thumb Code    22  main.o(i.tAudio)
+    tBrainThread                             0x0000303d   Thumb Code    66  main.o(i.tBrainThread)
+    tFrontLED                                0x0000308d   Thumb Code    40  main.o(i.tFrontLED)
+    tMotorThread                             0x000030b5   Thumb Code    98  main.o(i.tMotorThread)
+    turnLeft                                 0x00003121   Thumb Code    22  mymotor.o(i.turnLeft)
+    turnRight                                0x00003145   Thumb Code    22  mymotor.o(i.turnRight)
+    __I$use$fp                               0x00003168   Number         0  usenofp.o(x$fpl$usenofp)
+    maxPriority                              0x00003168   Data          36  main.o(.constdata)
+    aboveNormPriority                        0x0000318c   Data          36  main.o(.constdata)
+    osRtxUserSVC                             0x00003210   Data           4  rtx_lib.o(.constdata)
+    irqRtxLib                                0x00003214   Data           1  irq_cm0.o(.constdata)
+    osRtxConfig                              0x00003218   Data         104  rtx_lib.o(.rodata)
+    os_cb_sections                           0x00003280   Data          56  rtx_lib.o(.rodata)
+    Region$$Table$$Base                      0x000032c4   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x000032e4   Number         0  anon$$obj.o(Region$$Table)
     .bss.os.msgqueue.cb$$Base                0x20000040   Number         0  rtx_lib.o(.bss.os.msgqueue.cb)
     .bss.os.msgqueue.cb$$Limit               0x20000074   Number         0  rtx_lib.o(.bss.os.msgqueue.cb)
     .bss.os.thread.cb$$Base                  0x200000c4   Number         0  rtx_lib.o(.bss.os.thread.cb)
@@ -1931,9 +1931,9 @@ Memory Map of the image
 
   Image Entry point : 0x00000189
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x00004ad8, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x00003414])
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00004adc, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x00003418])
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000032e0, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000032e4, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2112,34 +2112,34 @@ Memory Map of the image
     0x00002bdc   0x00002bdc   0x00000020   Code   RO          476    i.osRtxErrorNotify  rtx_config.o
     0x00002bfc   0x00002bfc   0x00000004   Code   RO          477    i.osRtxIdleThread   rtx_config.o
     0x00002c00   0x00002c00   0x00000024   Code   RO          405    i.os_kernel_is_active  rtx_lib.o
-    0x00002c24   0x00002c24   0x000000d0   Code   RO          356    i.playConnectSong   mysound.o
-    0x00002cf4   0x00002cf4   0x000000d4   Code   RO          357    i.playEndSong       mysound.o
-    0x00002dc8   0x00002dc8   0x00000068   Code   RO          358    i.playRaceSong      mysound.o
-    0x00002e30   0x00002e30   0x00000024   Code   RO          244    i.reverse           mymotor.o
-    0x00002e54   0x00002e54   0x00000024   Code   RO          245    i.rightForward      mymotor.o
-    0x00002e78   0x00002e78   0x00000024   Code   RO          246    i.rightReverse      mymotor.o
-    0x00002e9c   0x00002e9c   0x00000078   Code   RO          132    i.runningGREEN_Moving  myled.o
-    0x00002f14   0x00002f14   0x000000bc   Code   RO          199    i.setupUART2        myuart.o
-    0x00002fd0   0x00002fd0   0x00000024   Code   RO          133    i.solidGREEN_Stationery  myled.o
-    0x00002ff4   0x00002ff4   0x00000028   Code   RO          247    i.stop              mymotor.o
-    0x0000301c   0x0000301c   0x0000001c   Code   RO            6    i.tAudio            main.o
-    0x00003038   0x00003038   0x00000050   Code   RO            7    i.tBrainThread      main.o
-    0x00003088   0x00003088   0x00000028   Code   RO            8    i.tFrontLED         main.o
-    0x000030b0   0x000030b0   0x0000006c   Code   RO            9    i.tMotorThread      main.o
-    0x0000311c   0x0000311c   0x00000024   Code   RO          248    i.turnLeft          mymotor.o
-    0x00003140   0x00003140   0x00000024   Code   RO          249    i.turnRight         mymotor.o
-    0x00003164   0x00003164   0x00000000   Code   RO         1080    x$fpl$usenofp       fz_ps.l(usenofp.o)
-    0x00003164   0x00003164   0x00000048   Data   RO           11    .constdata          main.o
-    0x000031ac   0x000031ac   0x00000064   Data   RO          412    .constdata          rtx_lib.o
-    0x00003210   0x00003210   0x00000001   Data   RO          835    .constdata          RTX_CM0.lib(irq_cm0.o)
-    0x00003211   0x00003211   0x00000003   PAD
-    0x00003214   0x00003214   0x000000a0   Data   RO          414    .rodata             rtx_lib.o
-    0x000032b4   0x000032b4   0x0000000b   Data   RO          601    .rodata.str1.4      RTX_CM0.lib(rtx_kernel.o)
-    0x000032bf   0x000032bf   0x00000001   PAD
-    0x000032c0   0x000032c0   0x00000020   Data   RO         1239    Region$$Table       anon$$obj.o
+    0x00002c24   0x00002c24   0x000000d4   Code   RO          356    i.playConnectSong   mysound.o
+    0x00002cf8   0x00002cf8   0x000000d4   Code   RO          357    i.playEndSong       mysound.o
+    0x00002dcc   0x00002dcc   0x00000068   Code   RO          358    i.playRaceSong      mysound.o
+    0x00002e34   0x00002e34   0x00000024   Code   RO          244    i.reverse           mymotor.o
+    0x00002e58   0x00002e58   0x00000024   Code   RO          245    i.rightForward      mymotor.o
+    0x00002e7c   0x00002e7c   0x00000024   Code   RO          246    i.rightReverse      mymotor.o
+    0x00002ea0   0x00002ea0   0x00000078   Code   RO          132    i.runningGREEN_Moving  myled.o
+    0x00002f18   0x00002f18   0x000000bc   Code   RO          199    i.setupUART2        myuart.o
+    0x00002fd4   0x00002fd4   0x00000024   Code   RO          133    i.solidGREEN_Stationery  myled.o
+    0x00002ff8   0x00002ff8   0x00000028   Code   RO          247    i.stop              mymotor.o
+    0x00003020   0x00003020   0x0000001c   Code   RO            6    i.tAudio            main.o
+    0x0000303c   0x0000303c   0x00000050   Code   RO            7    i.tBrainThread      main.o
+    0x0000308c   0x0000308c   0x00000028   Code   RO            8    i.tFrontLED         main.o
+    0x000030b4   0x000030b4   0x0000006c   Code   RO            9    i.tMotorThread      main.o
+    0x00003120   0x00003120   0x00000024   Code   RO          248    i.turnLeft          mymotor.o
+    0x00003144   0x00003144   0x00000024   Code   RO          249    i.turnRight         mymotor.o
+    0x00003168   0x00003168   0x00000000   Code   RO         1080    x$fpl$usenofp       fz_ps.l(usenofp.o)
+    0x00003168   0x00003168   0x00000048   Data   RO           11    .constdata          main.o
+    0x000031b0   0x000031b0   0x00000064   Data   RO          412    .constdata          rtx_lib.o
+    0x00003214   0x00003214   0x00000001   Data   RO          835    .constdata          RTX_CM0.lib(irq_cm0.o)
+    0x00003215   0x00003215   0x00000003   PAD
+    0x00003218   0x00003218   0x000000a0   Data   RO          414    .rodata             rtx_lib.o
+    0x000032b8   0x000032b8   0x0000000b   Data   RO          601    .rodata.str1.4      RTX_CM0.lib(rtx_kernel.o)
+    0x000032c3   0x000032c3   0x00000001   PAD
+    0x000032c4   0x000032c4   0x00000020   Data   RO         1239    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x1ffff000, Load base: 0x000032e0, Size: 0x000017f8, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x00000134])
+    Execution Region ER_RW (Exec base: 0x1ffff000, Load base: 0x000032e4, Size: 0x000017f8, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x00000134])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2161,13 +2161,13 @@ Memory Map of the image
     0x20000754   COMPRESSED   0x000000a4   Data   RW          602    .data.os            RTX_CM0.lib(rtx_kernel.o)
 
 
-    Execution Region ER_ZI (Exec base: 0x200007f8, Load base: 0x00003414, Size: 0x00000168, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x200007f8, Load base: 0x00003418, Size: 0x00000168, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x200007f8        -       0x00000060   Zero   RW         1112    .bss                c_p.l(libspace.o)
     0x20000858        -       0x00000001   Zero   RW          983    .bss.PendST         RTX_CM0.lib(os_systick.o)
-    0x20000859   0x00003414   0x00000007   PAD
+    0x20000859   0x00003418   0x00000007   PAD
     0x20000860        -       0x00000000   Zero   RW          505    HEAP                startup_mkl25z4.o
     0x20000860        -       0x00000100   Zero   RW          504    STACK               startup_mkl25z4.o
 
@@ -2184,7 +2184,7 @@ Image component sizes
        636         56          0          8          0       3606   myled.o
        328        114          0          0          0       3504   mymotor.o
        524         30          0          0          0        534   mypwm.o
-       544         62          0        996          0       3260   mysound.o
+       548         66          0        996          0       3332   mysound.o
        384         50          0          1          0      10761   myuart.o
         36          8          0          0          0        973   rtx_config.o
        136          6        260       4945          0      12706   rtx_lib.o
@@ -2192,7 +2192,7 @@ Image component sizes
        712         84          0          4          0       1655   system_mkl25z4.o
 
     ----------------------------------------------------------------------
-      3984        560        556       5972        256     262623   Object Totals
+      3988        564        556       5972        256     262695   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          0          0          0          9          0          0   (incl. Padding)
 
@@ -2264,15 +2264,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     12452        954        572       6136        360     382985   Grand Totals
-     12452        954        572        308        360     382985   ELF Image Totals (compressed)
-     12452        954        572        308          0          0   ROM Totals
+     12456        958        572       6136        360     383057   Grand Totals
+     12456        958        572        308        360     383057   ELF Image Totals (compressed)
+     12456        958        572        308          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                13024 (  12.72kB)
+    Total RO  Size (Code + RO Data)                13028 (  12.72kB)
     Total RW  Size (RW Data + ZI Data)              6496 (   6.34kB)
-    Total ROM Size (Code + RO Data + RW Data)      13332 (  13.02kB)
+    Total ROM Size (Code + RO Data + RW Data)      13336 (  13.02kB)
 
 ==============================================================================
 

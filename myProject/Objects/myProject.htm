@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\myProject.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\myProject.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Apr 06 19:33:44 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Apr 06 19:43:25 2021
 <BR><P>
 <H3>Maximum Stack Usage =        120 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -209,7 +209,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[5a]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 112 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; bluetoothConnected &rArr; playConnectSong &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -990,7 +990,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a8]"></a>bluetoothConnected</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, main.o(i.bluetoothConnected))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = bluetoothConnected &rArr; playConnectSong &rArr; __aeabi_dmul
+<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = bluetoothConnected &rArr; playConnectSong &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;playConnectSong
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flashGREEN_Twice
@@ -1040,7 +1040,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[5b]"></a>main</STRONG> (Thumb, 122 bytes, Stack size 0 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = main &rArr; bluetoothConnected &rArr; playConnectSong &rArr; __aeabi_dmul
+<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = main &rArr; bluetoothConnected &rArr; playConnectSong &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turnRight
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setupUART2
@@ -1088,8 +1088,8 @@ Global Symbols
 <P><STRONG><a name="[39]"></a>osRtxIdleThread</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, rtx_config.o(i.osRtxIdleThread))
 <BR>[Address Reference Count : 1]<UL><LI> rtx_thread.o(.text.osRtxThreadStartup)
 </UL>
-<P><STRONG><a name="[ab]"></a>playConnectSong</STRONG> (Thumb, 184 bytes, Stack size 32 bytes, mysound.o(i.playConnectSong))
-<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = playConnectSong &rArr; __aeabi_dmul
+<P><STRONG><a name="[ab]"></a>playConnectSong</STRONG> (Thumb, 186 bytes, Stack size 48 bytes, mysound.o(i.playConnectSong))
+<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = playConnectSong &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay100x
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
@@ -1116,8 +1116,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tAudio
 </UL>
 
-<P><STRONG><a name="[bd]"></a>playRaceSong</STRONG> (Thumb, 92 bytes, Stack size 0 bytes, mysound.o(i.playRaceSong))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = playRaceSong &rArr; delay100x &rArr; delay
+<P><STRONG><a name="[bd]"></a>playRaceSong</STRONG> (Thumb, 90 bytes, Stack size 24 bytes, mysound.o(i.playRaceSong))
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = playRaceSong &rArr; delay100x &rArr; delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay100x
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_idivmod

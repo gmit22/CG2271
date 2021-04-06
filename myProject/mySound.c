@@ -70,7 +70,7 @@ void playRaceSong() {
 
 	int noteDuration = 0, period = 0;
 	
-	while(1) {
+	//while(1) {
 		
 		for(int i = 0; i<notes; i+=2) {
 			// calculates the duration of each note
@@ -84,7 +84,7 @@ void playRaceSong() {
 			delay100x(24*noteDuration);
 		}
 		
-	}
+	//}
 }
 
 void playConnectSong () {
@@ -96,7 +96,7 @@ void playConnectSong () {
 
 	uint32_t period;
 
-	while(1) {
+	//while(1) {
 
 		for(int i = 0; i<notes; i+=2) {
 			divider = startSong[i + 1];
@@ -115,7 +115,7 @@ void playConnectSong () {
 			delay100x(2*10*noteDuration);
 		}
 
-	}
+	//}
 }
 
 
