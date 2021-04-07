@@ -161,6 +161,10 @@ void tBrainThread (void *argument) {
 		osSemaphoreAcquire(brainSem, osWaitForever);
 		
 		switch(userSignal) {
+			case END:
+				playEndSong();
+			break;
+			
 			case NORTH:
 			case SOUTH:
 			case EAST:
@@ -172,9 +176,7 @@ void tBrainThread (void *argument) {
 			case STOP:
 				osSemaphoreRelease(moveSem);
 				break;
-			case END:
-				playEndSong();
-				break;
+
 			default:
 				//stop();
 				break;
@@ -187,6 +189,7 @@ int main (void) {
  
   //System Initialization 
 	
+
 	SystemCoreClockUpdate();
 	setupUART2(BAUD_RATE);
 	initLED();
@@ -208,7 +211,7 @@ int main (void) {
 	osThreadNew(tAudio, NULL, NULL);
   //osThreadNew(tRearLED, NULL, NULL);
 	osThreadNew(tFrontLED, NULL, NULL);
-	osThreadNew(tMotorThread, NULL, NULL);
+	osThreadNew(tMotorThread, NULL, &aboveNormPriority);
 	
 	
   osKernelStart();                      // Start thread execution
