@@ -20,3 +20,5 @@
 .\objects\main.o: myBasic.h
 .\objects\main.o: C:\Users\alex1\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h
 .\objects\main.o: myMotor.h
+.\objects\main.o: mySound.h
+.\objects\main.o: C:\Users\alex1\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h

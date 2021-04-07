@@ -2,7 +2,7 @@
 #include "myBasic.h"
 
 //mySemaphores
-osSemaphoreId_t brainSem, moveSem;
+osSemaphoreId_t brainSem, moveSem, soundSem;
 
 /* Delay Function */
 void delay(volatile uint32_t nof) {
