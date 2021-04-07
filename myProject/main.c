@@ -39,6 +39,10 @@ const osThreadAttr_t aboveNormPriority = {
 	.priority = osPriorityAboveNormal
 };
 
+const osThreadAttr_t highPriority = {
+	.priority = osPriorityHigh
+};
+
 
 
 void bluetoothConnected() {
@@ -67,8 +71,7 @@ char isMoving() {
 void tAudio(void *arguement) {
 	
 	for (;;) {
-		while (userSignal != END) {playRaceSong();};
-		playEndSong(); 
+		playRaceSong();
 	}	
 }
 
@@ -112,31 +115,40 @@ void tMotorThread (void *argument) {
 		switch(userSignal) {
 			case NORTH:
 				forward();
+				//state = FORWARD;
 				break;
 			case SOUTH:
 				reverse();
+				//state = REVERSE;
 				break;
 			case EAST:
 				turnLeft();
+				//state = RIGHT;
 				break;
 			case WEST:
 				turnRight();
+				//state = LEFT;
 				break;
 			case NORTH_EAST:
 				rightForward();
+				//state = RIGHTFW;
 				break;
 			case SOUTH_EAST:
 				rightReverse();
+				//state = RIGHTRV;
 				break;
 			case SOUTH_WEST:
 				leftReverse();
+				//state = LEFTRV;
 				break;
 			case NORTH_WEST:
 				leftForward();
+				//state = LEFTFW;
 				break;
 			default:
 				stop();
 				userSignal = STOP;
+				//state = HALT;
 		}
 	}
 }
@@ -160,6 +172,9 @@ void tBrainThread (void *argument) {
 			case STOP:
 				osSemaphoreRelease(moveSem);
 				break;
+			case END:
+				playEndSong();
+				break;
 			default:
 				//stop();
 				break;
@@ -177,23 +192,24 @@ int main (void) {
 	initLED();
 	initPWM();  //Can please check if this PWM is for the motors or the sound?
 	offLEDModules();
-	turnRight();
 	//forward();
   osKernelInitialize();                 // Initialize CMSIS-RTOS
 	
 	//Initialize Semaphores
 	brainSem = osSemaphoreNew(1, 0, NULL);
 	moveSem = osSemaphoreNew(1, 0, NULL);
+	soundSem = osSemaphoreNew(1, 1, NULL);
 	
 	//Wair for bluetooth connectivity 
 	while (userSignal != CONNECTION);
 	bluetoothConnected();
 	
 	osThreadNew(tBrainThread, NULL, &maxPriority);
-	osThreadNew(tMotorThread, NULL, &aboveNormPriority);
+	osThreadNew(tAudio, NULL, NULL);
   //osThreadNew(tRearLED, NULL, NULL);
 	osThreadNew(tFrontLED, NULL, NULL);
-	osThreadNew(tAudio, NULL, NULL);
+	osThreadNew(tMotorThread, NULL, NULL);
+	
 	
   osKernelStart();                      // Start thread execution
   for (;;) {}

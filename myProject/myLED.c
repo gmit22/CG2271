@@ -94,10 +94,10 @@ void flashGREEN_Twice() {
 	for (int i=0; i<2; i++) {
 		PTE -> PSOR |= MASK(LED_F2) | MASK(LED_F3) | MASK(LED_F4) | MASK(LED_F5);
 		PTB -> PSOR |= MASK(LED_F8) | MASK(LED_F9) | MASK(LED_F10) | MASK(LED_F11);
-		delay(DELAY_FLASH);
+		delay(0x100000);
 		PTE -> PCOR |= MASK(LED_F2) | MASK(LED_F3) | MASK(LED_F4) | MASK(LED_F5);
 		PTB -> PCOR |= MASK(LED_F8) | MASK(LED_F9) | MASK(LED_F10) | MASK(LED_F11);
-		delay(DELAY_FLASH);		
+		delay(0x100000);		
 	}
 	
 }

@@ -7,6 +7,7 @@
 
 extern osSemaphoreId_t brainSem;
 extern osSemaphoreId_t moveSem;
+extern osSemaphoreId_t soundSem;
 
 void delay(uint32_t);
 

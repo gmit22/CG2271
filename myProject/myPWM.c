@@ -36,7 +36,7 @@ void initPWM() {
 	SIM->SOPT2 |= SIM_SOPT2_TPMSRC(1);
 	
 	//Set Modulo value 48000000 / 128 = 375000 / 7500 = 50 Hz
-	TPM0->MOD = 7500;
+	//TPM0->MOD = 7500;
 	TPM1->MOD = 7500;
 	TPM2->MOD = 7500;
 	
@@ -56,7 +56,7 @@ void initPWM() {
   TPM0_SC |= (TPM_SC_CMOD(1) | TPM_SC_PS(7)); //CMOD = 1 => LPTPM counter increments on every LPTPM counter clock
   TPM0_SC &= ~(TPM_SC_CPWMS_MASK); //count up by default (0)
 	
-	//enable PWM on TPM0 channel 0 - PTD0
+//	//enable PWM on TPM0 channel 0 - PTD0
   TPM0_C0SC &= ~((TPM_CnSC_ELSB_MASK) | (TPM_CnSC_ELSA_MASK) | (TPM_CnSC_MSB_MASK) | (TPM_CnSC_MSA_MASK));
   TPM0_C0SC |= (TPM_CnSC_ELSB(1) | TPM_CnSC_MSB(1));
 	

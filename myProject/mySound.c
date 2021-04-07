@@ -120,6 +120,7 @@ void playConnectSong () {
 
 
 void playEndSong() {
+	osSemaphoreAcquire(soundSem, osWaitForever);
 	int notes = sizeof(endSong) / sizeof(endSong[0]);
 
 	// This calculates the duration of a whole note in ms (60s/tempo)*4 beats.
@@ -146,4 +147,5 @@ void playEndSong() {
 			TPM0_C0V = 0;
 			delay100x(2*10*noteDuration);
 		}
+		osSemaphoreRelease(soundSem);
 }
