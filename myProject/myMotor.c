@@ -3,6 +3,7 @@
 #include "myMotor.h"
 
 #define ACTIVE 0x1D4C //7500
+#define LESS_ACTIVE 0x1388 //5000
 
 void stop() {
 	TPM1->MOD = 0;	//left stop
@@ -28,19 +29,20 @@ void forward() {
 	TPM1_C0V = 0; 
 	TPM2_C0V = 0;
 	
-	TPM1_C1V = ACTIVE/4; //TPM1_CH1 left forward
-	TPM2_C1V = ACTIVE/4; //TPM2_CH1 right forward
+	TPM1_C1V = ACTIVE/2; //TPM1_CH1 left forward
+	TPM2_C1V = ACTIVE/2; //TPM2_CH1 right forward
 }
 
 void reverse() {
+	
 	TPM1->MOD = 7500;
 	TPM2->MOD = 7500;
 	
 	TPM1_C1V = 0; 
 	TPM2_C1V = 0;
 	
-	TPM1_C0V = ACTIVE/4; //TPM1_CH0 left reverse
-	TPM2_C0V = ACTIVE/4; //TPM2_CH0 right reverse
+	TPM1_C0V = ACTIVE; //TPM1_CH0 left reverse
+	TPM2_C0V = ACTIVE; //TPM2_CH0 right reverse
 }
 
 //Restore to /2 later?
@@ -48,12 +50,11 @@ void turnRight() {
 	TPM1->MOD = 7500;
 	TPM2->MOD = 7500;
 	
-	TPM2_C1V = ACTIVE; //TPM2_CH0 right reverse
-	TPM1_C1V = 0;
-	TPM1_C0V = ACTIVE; //TPM1_CH1 left forward
-	
 	TPM2_C0V = 0;
+	TPM1_C1V = 0;
 	
+	TPM2_C1V = LESS_ACTIVE; //TPM2_CH0 right reverse
+	TPM1_C0V = LESS_ACTIVE; //TPM1_CH1 left forward
 }
 
 void turnLeft() {
@@ -61,11 +62,13 @@ void turnLeft() {
 	TPM1->MOD = 7500;
 	TPM2->MOD = 7500;
 	
-	TPM1_C1V = ACTIVE; //TPM2_CH0 right reverse
 	TPM2_C1V = 0;
-	TPM2_C0V = ACTIVE; //TPM1_CH1 left forward
-	
 	TPM1_C0V = 0;
+	
+	TPM1_C1V = LESS_ACTIVE; //TPM2_CH1 right forward
+	TPM2_C0V = LESS_ACTIVE; //TPM1_CH0 left reverse
+	
+	
 }
 
 
@@ -74,11 +77,11 @@ void rightForward() {
 	TPM1->MOD = 7500;
 	TPM2->MOD = 7500;
 	
-	TPM1_C1V = ACTIVE;
 	TPM2_C0V = 0;	
 	TPM1_C0V = 0; //TPM1_CH1 left forward
 	
-	TPM2_C1V = ACTIVE/6; //TPM2_CH1 right forward slower
+	TPM1_C1V = ACTIVE;
+	TPM2_C1V = ACTIVE/10; //TPM2_CH1 right forward slower
 }
 // Remvove for TPM1 and /8 for TPM2
 void rightReverse() {
@@ -89,7 +92,7 @@ void rightReverse() {
 	TPM2_C1V = 0;
 	
 	TPM1_C0V = ACTIVE; //TPM1_CH0 left reverse
-	TPM2_C0V = ACTIVE/8; //TPM2_CH0 right reverse
+	TPM2_C0V = ACTIVE/10; //TPM2_CH0 right reverse
 }
 // TPM1 /8 TPM2 no divide
 void leftReverse() {
@@ -99,7 +102,7 @@ void leftReverse() {
 	TPM1_C1V = 0;
 	TPM2_C1V = 0;
 	
-	TPM1_C0V = ACTIVE/8; //TPM1_CH0 left reverse
+	TPM1_C0V = ACTIVE/10; //TPM1_CH0 left reverse
 	TPM2_C0V = ACTIVE; //TPM2_CH0 right reverse
 }
 // TPM1 /8 TPM2 no divide
@@ -110,6 +113,6 @@ void leftForward() {
 	TPM1_C0V = 0;
 	TPM2_C0V = 0;
 	
-	TPM1_C1V = ACTIVE/8; //TPM1_CH1 left forward slower
+	TPM1_C1V = ACTIVE/10; //TPM1_CH1 left forward slower
 	TPM2_C1V = ACTIVE; //TPM2_CH1 right forward
 }

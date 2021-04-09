@@ -47,7 +47,8 @@ const osThreadAttr_t highPriority = {
 
 void bluetoothConnected() {
 	flashGREEN_Twice();
-	delay(1000);
+	//flashRED_Moving();
+	//delay(1000);
 	userSignal = STOP;
 	//Code to play a sound when bluetooth is connected to the Freedom Board.
 	playConnectSong(); 
@@ -209,7 +210,7 @@ int main (void) {
 	
 	osThreadNew(tBrainThread, NULL, &maxPriority);
 	osThreadNew(tAudio, NULL, NULL);
-  //osThreadNew(tRearLED, NULL, NULL);
+  osThreadNew(tRearLED, NULL, NULL);
 	osThreadNew(tFrontLED, NULL, NULL);
 	osThreadNew(tMotorThread, NULL, &aboveNormPriority);
 	

@@ -81,7 +81,7 @@ void runningGREEN_Moving(int i) {
 		osDelay(DELAY_RUN);
 		PTB -> PCOR |= MASK(green_led[i]);
 		//osDelay(DELAY_RUN);
-	}
+	} 
 }
 
 void solidGREEN_Stationery() {
