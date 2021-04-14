@@ -16,17 +16,19 @@
 
 extern volatile uint16_t read;
 
-volatile int ready;
-volatile uint16_t start;
-volatile uint16_t startRecord;
-volatile uint16_t endRecord;
-volatile uint16_t valueRecord;
+extern volatile int ready;
+extern volatile uint16_t start;
+extern volatile uint16_t startRecord;
+extern volatile uint16_t endRecord;
+extern volatile uint16_t valueRecord;
 
-volatile uint16_t end;
-volatile uint16_t counter;
-volatile uint16_t num;
+extern volatile uint16_t end;
+extern volatile uint16_t counter;
+extern volatile uint16_t num;
 
-volatile uint16_t maincounter;
+extern volatile uint16_t maincounter;
+
+extern volatile uint16_t read;
 
 void initUltrasonic(void);
 void ultrasonicTrigger(void);

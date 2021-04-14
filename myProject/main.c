@@ -109,9 +109,18 @@ void tFrontLED(void *arguement) {
 }
 
 /*----------------------------------------------------------------------------
- * Application tMotorThread
+ * Application tSelfDriveThread
  *---------------------------------------------------------------------------*/
-void tSelfDrive(void *argument) {
+void tSelfDriveThread(void *argument) {
+	
+	for (;;) {
+		osSemaphoreAcquire(selfDriveSem, osWaitForever);
+		readUltrasonic();
+		while (read > 0x0010) {
+			forward();
+		}
+		osSemaphoreRelease(selfDriveSem);
+	}
 	
 }
 
@@ -214,6 +223,7 @@ int main (void) {
 	brainSem = osSemaphoreNew(1, 0, NULL);
 	moveSem = osSemaphoreNew(1, 0, NULL);
 	soundSem = osSemaphoreNew(1, 1, NULL);
+	selfDriveSem = osSemaphoreNew(1, 0, NULL);
 	
 	//Wair for bluetooth connectivity 
 	while (userSignal != CONNECTION);

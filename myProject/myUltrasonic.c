@@ -9,6 +9,7 @@ volatile uint16_t valueRecord = 0;
 volatile uint16_t end = 0;
 volatile uint16_t counter = 0;
 volatile uint16_t num = 0;
+volatile uint16_t read = 0xFFFF;
 
 volatile uint16_t maincounter;
 

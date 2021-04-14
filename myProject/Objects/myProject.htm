@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\myProject.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\myProject.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Apr 14 15:41:27 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Apr 14 16:40:53 2021
 <BR><P>
 <H3>Maximum Stack Usage =        120 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -910,8 +910,8 @@ Global Symbols
 <P><STRONG><a name="[99]"></a>osSemaphoreRelease</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, rtx_semaphore.o(.text.osSemaphoreRelease))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = osSemaphoreRelease &rArr; osRtxPostProcess &rArr; osRtxErrorNotify &rArr; __ARM_common_switch8
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SemaphoreTokenIncrement
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxPostProcess
+<BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxPostProcess
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SemaphoreTokenIncrement
 </UL>
 <BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_IRQHandler
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;playEndSong
@@ -1063,7 +1063,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tMotorThread
 </UL>
 
-<P><STRONG><a name="[5c]"></a>main</STRONG> (Thumb, 142 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[5c]"></a>main</STRONG> (Thumb, 156 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = main &rArr; bluetoothConnected &rArr; playConnectSong &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setupUART2
@@ -1115,12 +1115,12 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = playConnectSong &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay100x
-<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
-<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_idivmod
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
 </UL>
 <BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bluetoothConnected
 </UL>
@@ -1131,12 +1131,12 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay100x
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osSemaphoreRelease
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osSemaphoreAcquire
-<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
-<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_idivmod
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tBrainThread
 </UL>
@@ -1195,7 +1195,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.main)
 </UL>
-<P><STRONG><a name="[46]"></a>tBrainThread</STRONG> (Thumb, 74 bytes, Stack size 0 bytes, main.o(i.tBrainThread))
+<P><STRONG><a name="[46]"></a>tBrainThread</STRONG> (Thumb, 86 bytes, Stack size 0 bytes, main.o(i.tBrainThread))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = tBrainThread &rArr; playEndSong &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;playEndSong
@@ -1433,18 +1433,18 @@ Local Symbols
 <P><STRONG><a name="[43]"></a>osRtxSemaphorePostProcess</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, rtx_semaphore.o(.text.osRtxSemaphorePostProcess))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = osRtxSemaphorePostProcess &rArr; osRtxThreadWaitExit &rArr; osRtxThreadDispatch &rArr; osRtxThreadReadyPut &rArr; osRtxThreadListPut
 </UL>
-<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SemaphoreTokenDecrement
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitExit
+<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitExit
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListGet
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SemaphoreTokenDecrement
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rtx_semaphore.o(.text.svcRtxSemaphoreNew)
 </UL>
 <P><STRONG><a name="[3c]"></a>svcRtxSemaphoreAcquire</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, rtx_semaphore.o(.text.svcRtxSemaphoreAcquire))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = svcRtxSemaphoreAcquire &rArr; osRtxThreadWaitEnter &rArr; osRtxThreadSwitch &rArr; osRtxThreadStackCheck &rArr; osRtxErrorNotify &rArr; __ARM_common_switch8
 </UL>
-<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SemaphoreTokenDecrement
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitEnter
+<BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitEnter
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListPut
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SemaphoreTokenDecrement
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rtx_semaphore.o(.text.osSemaphoreAcquire)
 </UL>
@@ -1459,9 +1459,9 @@ Local Symbols
 <P><STRONG><a name="[3e]"></a>svcRtxSemaphoreRelease</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, rtx_semaphore.o(.text.svcRtxSemaphoreRelease))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = svcRtxSemaphoreRelease &rArr; osRtxThreadWaitExit &rArr; osRtxThreadDispatch &rArr; osRtxThreadReadyPut &rArr; osRtxThreadListPut
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SemaphoreTokenIncrement
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitExit
+<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitExit
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListGet
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SemaphoreTokenIncrement
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rtx_semaphore.o(.text.osSemaphoreRelease)
 </UL>
