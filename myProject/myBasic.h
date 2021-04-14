@@ -8,6 +8,7 @@
 extern osSemaphoreId_t brainSem;
 extern osSemaphoreId_t moveSem;
 extern osSemaphoreId_t soundSem;
+extern osSemaphoreId_t selfDriveSem;
 
 void delay(uint32_t);
 

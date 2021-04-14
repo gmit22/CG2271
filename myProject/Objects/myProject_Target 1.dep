@@ -1,6 +1,6 @@
 Dependencies for Project 'myProject', Target 'Target 1': (DO NOT MODIFY !)
 CompilerVersion: 5060750::V5.06 update 6 (build 750)::ARMCC
-F (.\main.c)(0x606EE661)(--c99 --gnu -c --cpu Cortex-M0+ -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\CMSIS-I.\RTE\Device\MKL25Z128xxx4-I.\RTE\_Target_1-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\RTX\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL25Z128xxx4-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\main.c)(0x60769FE2)(--c99 --gnu -c --cpu Cortex-M0+ -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\CMSIS-I.\RTE\Device\MKL25Z128xxx4-I.\RTE\_Target_1-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\RTX\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL25Z128xxx4-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (.\RTE\_Target_1\RTE_Components.h)(0x606ECDBE)
 I (C:\Users\alex1\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h)(0x585B7C0A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
@@ -14,9 +14,11 @@ I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5D9AD218)
 I (myPWM.h)(0x606ECDBE)
 I (myLED.h)(0x606ED310)
 I (myUART.h)(0x606ECDBE)
-I (myBasic.h)(0x606ECDBE)
+I (myBasic.h)(0x60769D94)
 I (myMotor.h)(0x606ECDBE)
 I (mySound.h)(0x606ECDBE)
+I (myUltrasonic.h)(0x6076A070)
+I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
 F (.\myLED.c)(0x606ED73B)(--c99 --gnu -c --cpu Cortex-M0+ -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\CMSIS-I.\RTE\Device\MKL25Z128xxx4-I.\RTE\_Target_1-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\RTX\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL25Z128xxx4-o .\objects\myled.o --omf_browse .\objects\myled.crf --depend .\objects\myled.d)
 I (myLED.h)(0x606ED310)
 I (C:\Users\alex1\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h)(0x585B7C0A)
@@ -29,7 +31,7 @@ I (.\RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h)(0x606ECDBE)
 I (.\RTE\_Target_1\RTE_Components.h)(0x606ECDBE)
 I (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\Include\cmsis_os2.h)(0x5C8F1798)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5D9AD218)
-I (myBasic.h)(0x606ECDBE)
+I (myBasic.h)(0x60769D94)
 F (.\myUART.c)(0x606ECDBE)(--c99 --gnu -c --cpu Cortex-M0+ -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\CMSIS-I.\RTE\Device\MKL25Z128xxx4-I.\RTE\_Target_1-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\RTX\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL25Z128xxx4-o .\objects\myuart.o --omf_browse .\objects\myuart.crf --depend .\objects\myuart.d)
 I (C:\Users\alex1\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h)(0x585B7C0A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
@@ -42,9 +44,9 @@ I (myUART.h)(0x606ECDBE)
 I (.\RTE\_Target_1\RTE_Components.h)(0x606ECDBE)
 I (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\Include\cmsis_os2.h)(0x5C8F1798)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5D9AD218)
-I (myBasic.h)(0x606ECDBE)
+I (myBasic.h)(0x60769D94)
 F (.\myUART.h)(0x606ECDBE)()
-F (.\myMotor.c)(0x606EE8AB)(--c99 --gnu -c --cpu Cortex-M0+ -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\CMSIS-I.\RTE\Device\MKL25Z128xxx4-I.\RTE\_Target_1-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\RTX\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL25Z128xxx4-o .\objects\mymotor.o --omf_browse .\objects\mymotor.crf --depend .\objects\mymotor.d)
+F (.\myMotor.c)(0x606FD1EC)(--c99 --gnu -c --cpu Cortex-M0+ -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\CMSIS-I.\RTE\Device\MKL25Z128xxx4-I.\RTE\_Target_1-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\RTX\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL25Z128xxx4-o .\objects\mymotor.o --omf_browse .\objects\mymotor.crf --depend .\objects\mymotor.d)
 I (C:\Users\alex1\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h)(0x585B7C0A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
 I (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h)(0x5D2590B6)
@@ -52,12 +54,12 @@ I (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cms
 I (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5D2590B6)
 I (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5D2590B6)
 I (.\RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h)(0x606ECDBE)
-I (myBasic.h)(0x606ECDBE)
+I (myBasic.h)(0x60769D94)
 I (.\RTE\_Target_1\RTE_Components.h)(0x606ECDBE)
 I (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\Include\cmsis_os2.h)(0x5C8F1798)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5D9AD218)
 I (myMotor.h)(0x606ECDBE)
-F (.\myPWM.c)(0x606ECDBE)(--c99 --gnu -c --cpu Cortex-M0+ -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\CMSIS-I.\RTE\Device\MKL25Z128xxx4-I.\RTE\_Target_1-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\RTX\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL25Z128xxx4-o .\objects\mypwm.o --omf_browse .\objects\mypwm.crf --depend .\objects\mypwm.d)
+F (.\myPWM.c)(0x60769C81)(--c99 --gnu -c --cpu Cortex-M0+ -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\CMSIS-I.\RTE\Device\MKL25Z128xxx4-I.\RTE\_Target_1-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\RTX\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL25Z128xxx4-o .\objects\mypwm.o --omf_browse .\objects\mypwm.crf --depend .\objects\mypwm.d)
 I (myPWM.h)(0x606ECDBE)
 I (C:\Users\alex1\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h)(0x585B7C0A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
@@ -67,8 +69,8 @@ I (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cms
 I (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5D2590B6)
 I (.\RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h)(0x606ECDBE)
 F (.\myPWM.h)(0x606ECDBE)()
-F (.\myBasic.h)(0x606ECDBE)()
-F (.\myBasic.c)(0x606ECDBE)(--c99 --gnu -c --cpu Cortex-M0+ -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\CMSIS-I.\RTE\Device\MKL25Z128xxx4-I.\RTE\_Target_1-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\RTX\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL25Z128xxx4-o .\objects\mybasic.o --omf_browse .\objects\mybasic.crf --depend .\objects\mybasic.d)
+F (.\myBasic.h)(0x60769D94)()
+F (.\myBasic.c)(0x60769D94)(--c99 --gnu -c --cpu Cortex-M0+ -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\CMSIS-I.\RTE\Device\MKL25Z128xxx4-I.\RTE\_Target_1-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\RTX\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL25Z128xxx4-o .\objects\mybasic.o --omf_browse .\objects\mybasic.crf --depend .\objects\mybasic.d)
 I (C:\Users\alex1\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h)(0x585B7C0A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
 I (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h)(0x5D2590B6)
@@ -76,7 +78,7 @@ I (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cms
 I (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5D2590B6)
 I (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5D2590B6)
 I (.\RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h)(0x606ECDBE)
-I (myBasic.h)(0x606ECDBE)
+I (myBasic.h)(0x60769D94)
 I (.\RTE\_Target_1\RTE_Components.h)(0x606ECDBE)
 I (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\Include\cmsis_os2.h)(0x5C8F1798)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5D9AD218)
@@ -92,11 +94,26 @@ I (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cms
 I (.\RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h)(0x606ECDBE)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
 I (mySound.h)(0x606ECDBE)
-I (myBasic.h)(0x606ECDBE)
+I (myBasic.h)(0x60769D94)
 I (.\RTE\_Target_1\RTE_Components.h)(0x606ECDBE)
 I (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\Include\cmsis_os2.h)(0x5C8F1798)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5D9AD218)
 I (myPWM.h)(0x606ECDBE)
+F (.\myUltrasonic.c)(0x6076A070)(--c99 --gnu -c --cpu Cortex-M0+ -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\CMSIS-I.\RTE\Device\MKL25Z128xxx4-I.\RTE\_Target_1-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\RTX\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL25Z128xxx4-o .\objects\myultrasonic.o --omf_browse .\objects\myultrasonic.crf --depend .\objects\myultrasonic.d)
+I (myUltrasonic.h)(0x6076A070)
+I (C:\Users\alex1\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h)(0x585B7C0A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
+I (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h)(0x5D2590B6)
+I (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_version.h)(0x5D2590B6)
+I (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5D2590B6)
+I (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5D2590B6)
+I (.\RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h)(0x606ECDBE)
+I (.\RTE\_Target_1\RTE_Components.h)(0x606ECDBE)
+I (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\Include\cmsis_os2.h)(0x5C8F1798)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5D9AD218)
+I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
+I (myBasic.h)(0x60769D94)
+F (.\myUltrasonic.h)(0x6076A070)()
 F (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\RTX\Library\ARM\RTX_CM0.lib)(0x5D2590B8)()
 F (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\RTX\Source\rtx_lib.c)(0x5D2590B8)(--c99 --gnu -c --cpu Cortex-M0+ -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\CMSIS-I.\RTE\Device\MKL25Z128xxx4-I.\RTE\_Target_1-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\RTOS2\RTX\Include-IC:\Users\alex1\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL25Z128xxx4-o .\objects\rtx_lib.o --omf_browse .\objects\rtx_lib.crf --depend .\objects\rtx_lib.d)
 I (C:\Users\alex1\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5D2590B6)

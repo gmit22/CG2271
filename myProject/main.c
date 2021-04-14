@@ -11,6 +11,7 @@
 #include "myBasic.h"
 #include "myMotor.h"
 #include "mySound.h"
+#include "myUltrasonic.h"
 
 #define NORTH 1
 #define SOUTH 2
@@ -110,6 +111,14 @@ void tFrontLED(void *arguement) {
 /*----------------------------------------------------------------------------
  * Application tMotorThread
  *---------------------------------------------------------------------------*/
+void tSelfDrive(void *argument) {
+	
+}
+
+
+/*----------------------------------------------------------------------------
+ * Application tMotorThread
+ *---------------------------------------------------------------------------*/
 void tMotorThread (void *argument) {
 	for(;;) {
 		osSemaphoreAcquire(moveSem, osWaitForever);
@@ -177,7 +186,9 @@ void tBrainThread (void *argument) {
 			case STOP:
 				osSemaphoreRelease(moveSem);
 				break;
-
+			case SELF_DRIVE:
+				osSemaphoreRelease(selfDriveSem);
+				break;
 			default:
 				//stop();
 				break;
@@ -196,7 +207,7 @@ int main (void) {
 	initLED();
 	initPWM();  //Can please check if this PWM is for the motors or the sound?
 	offLEDModules();
-	//forward();
+	//initUltrasonic();
   osKernelInitialize();                 // Initialize CMSIS-RTOS
 	
 	//Initialize Semaphores
