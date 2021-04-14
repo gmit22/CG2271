@@ -112,13 +112,10 @@ void tFrontLED(void *arguement) {
  * Application tSelfDriveThread
  *---------------------------------------------------------------------------*/
 void tSelfDriveThread(void *argument) {
-	
 	for (;;) {
 		osSemaphoreAcquire(selfDriveSem, osWaitForever);
 		readUltrasonic();
-		while (read > 0x0010) {
-			forward();
-		}
+		osDelay(1000);
 		osSemaphoreRelease(selfDriveSem);
 	}
 	
@@ -216,7 +213,7 @@ int main (void) {
 	initLED();
 	initPWM();  //Can please check if this PWM is for the motors or the sound?
 	offLEDModules();
-	//initUltrasonic();
+	initUltrasonic();
   osKernelInitialize();                 // Initialize CMSIS-RTOS
 	
 	//Initialize Semaphores
@@ -234,6 +231,7 @@ int main (void) {
   osThreadNew(tRearLED, NULL, NULL);
 	osThreadNew(tFrontLED, NULL, NULL);
 	osThreadNew(tMotorThread, NULL, &aboveNormPriority);
+	osThreadNew(tSelfDriveThread, NULL, NULL);
 	
 	
   osKernelStart();                      // Start thread execution
