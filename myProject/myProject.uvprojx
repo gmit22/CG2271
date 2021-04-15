@@ -442,6 +442,11 @@
               <FileType>1</FileType>
               <FilePath>.\mySound.c</FilePath>
             </File>
+            <File>
+              <FileName>myUltrasonic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\myUltrasonic.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

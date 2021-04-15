@@ -17,7 +17,7 @@
 #define LED_F11 11 // PortB Pin 11
 
 // Rear LED pins
-#define LED_R1 1 // PortA Pin 1
+#define LED_R1 2 // PortA Pin 1
 
 //Delay for RED rear led to blink
 #define FREQ_1HZ 500 //milliseconds

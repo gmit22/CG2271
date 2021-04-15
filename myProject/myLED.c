@@ -69,19 +69,21 @@ void flashRED_Stationery() {
 	osDelay(FREQ_2HZ);	
 }
 
-void runningGREEN_Moving(int i) {
-		
-	if (i < 4) {
-		PTE -> PSOR |= MASK(green_led[i]);
-		osDelay(DELAY_RUN);
-		PTE -> PCOR |= MASK(green_led[i]);
+void runningGREEN_Moving(int k) {
+	offFrontLED();
+	
+	//for (; k<8; ++k) {
+		if (k < 4) {
+			PTE -> PSOR |= MASK(green_led[k]);
+			osDelay(DELAY_RUN);
+			PTE -> PCOR |= MASK(green_led[k]);
 		//osDelay(DELAY_RUN);
-	} else if (i >= 4) {
-		PTB -> PSOR |= MASK(green_led[i]);
-		osDelay(DELAY_RUN);
-		PTB -> PCOR |= MASK(green_led[i]);
-		//osDelay(DELAY_RUN);
-	}
+		} else if (k >= 4) {
+			PTB -> PSOR |= MASK(green_led[k]);
+			osDelay(DELAY_RUN);
+			PTB -> PCOR |= MASK(green_led[k]);
+			//osDelay(DELAY_RUN);
+		}
 }
 
 void solidGREEN_Stationery() {

@@ -7,6 +7,10 @@
 // change this to make the song slower or faster
 int tempo = 144;
 
+volatile int endRaceSong =1; 
+
+//volatile int endRaceSong = 1;
+
 // notes of the moledy followed by the duration.
 // a 4 means a quarter note, 8 an eighteenth , 16 sixteenth, so on
 // !!negative numbers are used to represent dotted notes,
@@ -66,6 +70,7 @@ static void delay100x(volatile uint32_t nof) {
 
 
 void playRaceSong() {
+	//if (endRaceSong){
 	int notes = sizeof(starWarsMelody) / sizeof(starWarsMelody[0]);
 
 	int noteDuration = 0, period = 0;
@@ -73,16 +78,20 @@ void playRaceSong() {
 	//while(1) {
 		
 		for(int i = 0; i<notes; i+=2) {
+			if (endRaceSong==0)break;
 			// calculates the duration of each note
 			noteDuration = starWarsMelody[i + 1];
 			period = TO_MOD(starWarsMelody[i]);
 			TPM0->MOD = period;
 			TPM0_C0V = period / 4; //12.5% duty cycle
-			delay100x(25*noteDuration);
+			osDelay (noteDuration/2);
+			//delay100x(25*noteDuration);
 			TPM0->MOD = 0;
 			TPM0_C0V = 0;
-			delay100x(24*noteDuration);
-		}
+			osDelay (noteDuration/2);
+			//delay100x(24*noteDuration);
+		//}
+	}
 		
 	//}
 }
@@ -121,6 +130,7 @@ void playConnectSong () {
 
 void playEndSong() {
 	osSemaphoreAcquire(soundSem, osWaitForever);
+	//endRaceSong =0;
 	int notes = sizeof(endSong) / sizeof(endSong[0]);
 
 	// This calculates the duration of a whole note in ms (60s/tempo)*4 beats.
@@ -142,10 +152,13 @@ void playEndSong() {
 			period = TO_MOD(endSong[i]);
 			TPM0->MOD = period;
 			TPM0_C0V = period / 8;
-			delay100x(2*9*noteDuration);
+			//delay100x(2*9*noteDuration);
+			osDelay (noteDuration/2);
 			TPM0->MOD = 0;
 			TPM0_C0V = 0;
-			delay100x(2*10*noteDuration);
+			//delay100x(2*10*noteDuration);
+			osDelay (noteDuration/2);
+
 		}
 		osSemaphoreRelease(soundSem);
 }
