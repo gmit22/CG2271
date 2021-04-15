@@ -37,16 +37,20 @@ volatile uint32_t pitCounter = 0x00;
 uint32_t pitValue = 0x00;
 float pitDistance = 0;
 int selfDriveFlag = 1;
+int selfReturnFlag = 1;
+
 
 volatile int ready;
 volatile uint32_t start;
 volatile uint32_t startRecord;
 
+
+
 osMessageQueueId_t ultrasonicMessage;
 osMessageQueueId_t ultrasonicDistance;
 
 
-osMutexId_t myMutex;
+//osMutexId_t myMutex;
 
 const osThreadAttr_t maxPriority = {
 	.priority = osPriorityRealtime
@@ -69,7 +73,7 @@ void bluetoothConnected() {
 	//delay(1000);
 	userSignal = STOP;
 	//Code to play a sound when bluetooth is connected to the Freedom Board.
-	//playConnectSong(); 
+	playConnectSong(); 
 }
 
 void PORTD_IRQHandler() {
@@ -133,7 +137,8 @@ char isMoving() {
 void tAudio(void *arguement) {
 	
 	for (;;) {
-		playRaceSong();
+		if (endRaceSong)playRaceSong();
+		else playEndSong();
 
 	}	
 }
@@ -195,22 +200,36 @@ void tSelfDriveThread(void *argument) {
 			
 				while(selfDriveFlag){
 					pitDistance = (gettingPITdistance * 0.028333 * 0.01715)  + 4;
+					forward();
+					osDelay(200);
+					while (pitDistance > 45) {
+						pitDistance = (gettingPITdistance * 0.028333 * 0.01715)  + 4;
 
-					if (pitDistance < 35) {
-						//pitDistance = (distance * 0.028333 * 0.01715)  + 4;
-
+						shortForward();
 						selfDriveFlag = 0;
 					}
-					shortForward();
+					//shortForward();
+					stop();
 					osDelay(1500);
-				}
+				//}
 				uturn();
-				selfDriveFlag = 1;
-				
-			//osDelay(1000);
-			//osSemaphoreRelease(selfDriveSem);
-			//osSemaphoreRelease(triggerSem);
-				//osMutexRelease(myMutex);
+			  osDelay(1500);
+
+				while(selfReturnFlag){
+					pitDistance = (gettingPITdistance * 0.028333 * 0.01715)  + 4;
+
+					if (pitDistance < 45) {
+						selfReturnFlag = 0;
+					}
+					comingBack();
+					osDelay(750);
+					stop();
+					osDelay(2000);
+				}
+				stop();
+				selfReturnFlag = 1;
+
+			}
 		}
 }
 
@@ -276,7 +295,9 @@ void tBrainThread (void *argument) {
 		
 		switch(userSignal) {
 			case END:
-				playEndSong();
+				//osMutexRelease(myMutex);
+				endRaceSong = 0; 
+				//playEndSong();
 				break;
 			case NORTH:
 			case SOUTH:

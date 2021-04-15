@@ -10,6 +10,7 @@ extern osSemaphoreId_t moveSem;
 extern osSemaphoreId_t soundSem;
 extern osSemaphoreId_t selfDriveSem;
 extern osSemaphoreId_t triggerSem;
+extern osMutexId_t myMutex;
 
 void delay(uint32_t);
 

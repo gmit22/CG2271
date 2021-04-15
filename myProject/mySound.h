@@ -102,6 +102,8 @@
 #define NOTE_DS8 4978
 #define REST 0
 
+extern volatile int endRaceSong;
+
 void playConnectSong(void);
 void playRaceSong(void);
 void playEndSong(void);

@@ -24,5 +24,6 @@ void leftReverse(void);
 void leftForward(void);
 void uturn(void);
 void shortForward(void);
+void comingBack(void);
 
 #endif
