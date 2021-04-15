@@ -36,7 +36,7 @@ void initPWM() {
 	SIM->SOPT2 |= SIM_SOPT2_TPMSRC(1);
 	
 	//Set Modulo value 48000000 / 128 = 375000 / 7500 = 50 Hz
-	TPM0->MOD = 7500;
+	TPM0->MOD = 3750;
 	TPM1->MOD = 7500;
 	TPM2->MOD = 7500;
 	

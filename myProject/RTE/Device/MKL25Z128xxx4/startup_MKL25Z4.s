@@ -267,7 +267,15 @@ Reset_Handler   PROC
                 IMPORT  SystemInit
                 IMPORT  __main
 
-                CPSID   I               ; Mask interrupts
+
+
+
+
+
+
+
+
+				CPSID   I               ; Mask interrupts
                 LDR     R0, =SystemInit
                 BLX     R0
                 CPSIE   i               ; Unmask interrupts

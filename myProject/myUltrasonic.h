@@ -14,21 +14,18 @@
 
 #define MASK(x) (1 << (x))
 
-extern volatile uint16_t read;
+extern volatile uint32_t read;
 
 extern volatile int ready;
-extern volatile uint16_t start;
-extern volatile uint16_t startRecord;
-extern volatile uint16_t endRecord;
-extern volatile uint16_t valueRecord;
+extern volatile uint32_t start;
+extern volatile uint32_t startRecord;
+extern float value;
 
-extern volatile uint16_t end;
-extern volatile uint16_t counter;
-extern volatile uint16_t num;
+extern volatile int orange;
 
-extern volatile uint16_t maincounter;
-
-extern volatile uint16_t read;
+//extern volatile uint16_t end;
+extern volatile uint32_t counter;
+extern volatile uint32_t read;
 
 void initUltrasonic(void);
 void ultrasonicTrigger(void);
