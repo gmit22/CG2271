@@ -132,7 +132,7 @@ void selfRight() {
 	TPM2_C0V = 0;	
 	TPM1_C0V = 0; //TPM1_CH1 left forward
 	
-	TPM1_C1V = LESS_ACTIVE;
+	TPM1_C1V = ACTIVE;
 	TPM2_C1V = 625; //TPM2_CH1 right forward slower
 }
 
@@ -172,29 +172,25 @@ void uturn() {
 	stop();
 	osDelay(2000);
 	selfRight();
-	osDelay(1000);
+	osDelay(700);
 	stop();
 	osDelay(2000);
 	selfRight();
-	osDelay(1000);
+	osDelay(700);
 	stop();
 	osDelay(2000);
 	selfRight();
-	osDelay(1000);
+	osDelay(700);
 	stop();
 	osDelay(2000);
 	selfRight();
-	osDelay(1000);
+	osDelay(700);
 	stop();
 	osDelay(2000);
 	selfForward();
-	osDelay(400);
-	stop();
-	osDelay(400);
-	//rightForward();
-	//osDelay(1000);
-	//stop();
-	//osDelay(2000);
+	osDelay(650);
+  stop();
+	osDelay(2000);
 	turnLeft();
 	osDelay(400);
 	stop();

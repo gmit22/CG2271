@@ -164,6 +164,7 @@ void tFrontLED(void *arguement) {
 			ledIndex = (ledIndex + 1)%8;
 			runningGREEN_Moving(ledIndex);
 		} else {
+			ledIndex = 0;
 			solidGREEN_Stationery();
 		}
 	}
@@ -201,7 +202,7 @@ void tSelfDriveThread(void *argument) {
 						selfDriveFlag = 0;
 					}
 					shortForward();
-					osDelay(2000);
+					osDelay(1500);
 				}
 				uturn();
 				selfDriveFlag = 1;

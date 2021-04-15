@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\myProject.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\myProject.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Apr 15 18:26:25 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Apr 15 20:57:34 2021
 <BR><P>
 <H3>Maximum Stack Usage =        120 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1294,7 +1294,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.main)
 </UL>
-<P><STRONG><a name="[4b]"></a>tFrontLED</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, main.o(i.tFrontLED))
+<P><STRONG><a name="[4b]"></a>tFrontLED</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, main.o(i.tFrontLED))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = tFrontLED &rArr; runningGREEN_Moving &rArr; osDelay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;solidGREEN_Stationery
@@ -1329,7 +1329,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.main)
 </UL>
-<P><STRONG><a name="[47]"></a>tSelfDriveThread</STRONG> (Thumb, 120 bytes, Stack size 24 bytes, main.o(i.tSelfDriveThread))
+<P><STRONG><a name="[47]"></a>tSelfDriveThread</STRONG> (Thumb, 118 bytes, Stack size 24 bytes, main.o(i.tSelfDriveThread))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = tSelfDriveThread &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uturn
@@ -1369,7 +1369,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tMotorThread
 </UL>
 
-<P><STRONG><a name="[e1]"></a>uturn</STRONG> (Thumb, 188 bytes, Stack size 8 bytes, mymotor.o(i.uturn))
+<P><STRONG><a name="[e1]"></a>uturn</STRONG> (Thumb, 186 bytes, Stack size 8 bytes, mymotor.o(i.uturn))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = uturn &rArr; osDelay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;selfRight
