@@ -61,7 +61,7 @@ char isMoving() {
 	if (userSignal == STOP || userSignal == END) {
 		isMove = 0;
 	} else if (userSignal == NORTH || userSignal == SOUTH || userSignal == EAST || userSignal == WEST 
-					|| userSignal == NORTH_EAST || userSignal == NORTH_WEST || userSignal == SOUTH_EAST || userSignal == SOUTH_WEST) {
+					|| userSignal == NORTH_EAST || userSignal == NORTH_WEST || userSignal == SOUTH_EAST || userSignal == SOUTH_WEST || userSignal == SELF_DRIVE) {
 					isMove = 1;
 	}
 	return isMove;	
@@ -99,6 +99,7 @@ void tFrontLED(void *arguement) {
 	int ledIndex = 0;
 	
 	for (;;) {
+		ledIndex = 0;
 		if (isMoving()) {
 			ledIndex = (ledIndex + 1)%8;
 			runningGREEN_Moving(ledIndex);
