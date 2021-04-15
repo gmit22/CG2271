@@ -447,167 +447,162 @@ rK6, BackDoorK7
   270 00000000         
   271 00000000         
   272 00000000         
-  273 00000000         
-  274 00000000         
-  275 00000000         
-  276 00000000         
-  277 00000000         
-  278 00000000 B672            CPSID            I           ; Mask interrupts
+  273 00000000 B672            CPSID            I           ; Mask interrupts
+  274 00000002 4809            LDR              R0, =SystemInit
+  275 00000004 4780            BLX              R0
+  276 00000006 B662            CPSIE            i           ; Unmask interrupts
+                                                            
+  277 00000008 4808            LDR              R0, =__main
 
 
 
 ARM Macro Assembler    Page 8 
 
 
-  279 00000002 4809            LDR              R0, =SystemInit
-  280 00000004 4780            BLX              R0
-  281 00000006 B662            CPSIE            i           ; Unmask interrupts
-                                                            
-  282 00000008 4808            LDR              R0, =__main
-  283 0000000A 4700            BX               R0
-  284 0000000C                 ENDP
-  285 0000000C         
-  286 0000000C         
-  287 0000000C         ; Dummy Exception Handlers (infinite loops which can be 
+  278 0000000A 4700            BX               R0
+  279 0000000C                 ENDP
+  280 0000000C         
+  281 0000000C         
+  282 0000000C         ; Dummy Exception Handlers (infinite loops which can be 
                        modified)
-  289 0000000C         NMI_Handler
+  284 0000000C         NMI_Handler
                                PROC
-  290 0000000C                 EXPORT           NMI_Handler         [WEAK]
-  291 0000000C E7FE            B                .
-  292 0000000E                 ENDP
-  294 0000000E         HardFault_Handler
+  285 0000000C                 EXPORT           NMI_Handler         [WEAK]
+  286 0000000C E7FE            B                .
+  287 0000000E                 ENDP
+  289 0000000E         HardFault_Handler
                                PROC
-  295 0000000E                 EXPORT           HardFault_Handler         [WEAK
+  290 0000000E                 EXPORT           HardFault_Handler         [WEAK
 ]
-  296 0000000E E7FE            B                .
-  297 00000010                 ENDP
-  299 00000010         SVC_Handler
+  291 0000000E E7FE            B                .
+  292 00000010                 ENDP
+  294 00000010         SVC_Handler
                                PROC
-  300 00000010                 EXPORT           SVC_Handler         [WEAK]
-  301 00000010 E7FE            B                .
-  302 00000012                 ENDP
-  304 00000012         PendSV_Handler
+  295 00000010                 EXPORT           SVC_Handler         [WEAK]
+  296 00000010 E7FE            B                .
+  297 00000012                 ENDP
+  299 00000012         PendSV_Handler
                                PROC
-  305 00000012                 EXPORT           PendSV_Handler         [WEAK]
-  306 00000012 E7FE            B                .
-  307 00000014                 ENDP
-  309 00000014         SysTick_Handler
+  300 00000012                 EXPORT           PendSV_Handler         [WEAK]
+  301 00000012 E7FE            B                .
+  302 00000014                 ENDP
+  304 00000014         SysTick_Handler
                                PROC
-  310 00000014                 EXPORT           SysTick_Handler         [WEAK]
-  311 00000014 E7FE            B                .
-  312 00000016                 ENDP
-  314 00000016         Default_Handler
+  305 00000014                 EXPORT           SysTick_Handler         [WEAK]
+  306 00000014 E7FE            B                .
+  307 00000016                 ENDP
+  309 00000016         Default_Handler
                                PROC
-  315 00000016                 EXPORT           DMA0_IRQHandler         [WEAK]
-  316 00000016                 EXPORT           DMA1_IRQHandler         [WEAK]
-  317 00000016                 EXPORT           DMA2_IRQHandler         [WEAK]
-  318 00000016                 EXPORT           DMA3_IRQHandler         [WEAK]
-  319 00000016                 EXPORT           Reserved20_IRQHandler         [
+  310 00000016                 EXPORT           DMA0_IRQHandler         [WEAK]
+  311 00000016                 EXPORT           DMA1_IRQHandler         [WEAK]
+  312 00000016                 EXPORT           DMA2_IRQHandler         [WEAK]
+  313 00000016                 EXPORT           DMA3_IRQHandler         [WEAK]
+  314 00000016                 EXPORT           Reserved20_IRQHandler         [
 WEAK]
-  320 00000016                 EXPORT           FTFA_IRQHandler         [WEAK]
-  321 00000016                 EXPORT           LVD_LVW_IRQHandler         [WEA
+  315 00000016                 EXPORT           FTFA_IRQHandler         [WEAK]
+  316 00000016                 EXPORT           LVD_LVW_IRQHandler         [WEA
 K]
-  322 00000016                 EXPORT           LLWU_IRQHandler         [WEAK]
-  323 00000016                 EXPORT           I2C0_IRQHandler         [WEAK]
-  324 00000016                 EXPORT           I2C1_IRQHandler         [WEAK]
-  325 00000016                 EXPORT           SPI0_IRQHandler         [WEAK]
-  326 00000016                 EXPORT           SPI1_IRQHandler         [WEAK]
-  327 00000016                 EXPORT           UART0_IRQHandler         [WEAK]
-  328 00000016                 EXPORT           UART1_IRQHandler         [WEAK]
-  329 00000016                 EXPORT           UART2_IRQHandler         [WEAK]
-  330 00000016                 EXPORT           ADC0_IRQHandler         [WEAK]
-  331 00000016                 EXPORT           CMP0_IRQHandler         [WEAK]
-  332 00000016                 EXPORT           TPM0_IRQHandler         [WEAK]
+  317 00000016                 EXPORT           LLWU_IRQHandler         [WEAK]
+  318 00000016                 EXPORT           I2C0_IRQHandler         [WEAK]
+  319 00000016                 EXPORT           I2C1_IRQHandler         [WEAK]
+  320 00000016                 EXPORT           SPI0_IRQHandler         [WEAK]
+  321 00000016                 EXPORT           SPI1_IRQHandler         [WEAK]
+  322 00000016                 EXPORT           UART0_IRQHandler         [WEAK]
+  323 00000016                 EXPORT           UART1_IRQHandler         [WEAK]
+  324 00000016                 EXPORT           UART2_IRQHandler         [WEAK]
+  325 00000016                 EXPORT           ADC0_IRQHandler         [WEAK]
+  326 00000016                 EXPORT           CMP0_IRQHandler         [WEAK]
+  327 00000016                 EXPORT           TPM0_IRQHandler         [WEAK]
+  328 00000016                 EXPORT           TPM1_IRQHandler         [WEAK]
+  329 00000016                 EXPORT           TPM2_IRQHandler         [WEAK]
+  330 00000016                 EXPORT           RTC_IRQHandler         [WEAK]
+  331 00000016                 EXPORT           RTC_Seconds_IRQHandler         
+[WEAK]
 
 
 
 ARM Macro Assembler    Page 9 
 
 
-  333 00000016                 EXPORT           TPM1_IRQHandler         [WEAK]
-  334 00000016                 EXPORT           TPM2_IRQHandler         [WEAK]
-  335 00000016                 EXPORT           RTC_IRQHandler         [WEAK]
-  336 00000016                 EXPORT           RTC_Seconds_IRQHandler         
-[WEAK]
-  337 00000016                 EXPORT           PIT_IRQHandler         [WEAK]
-  338 00000016                 EXPORT           Reserved39_IRQHandler         [
+  332 00000016                 EXPORT           PIT_IRQHandler         [WEAK]
+  333 00000016                 EXPORT           Reserved39_IRQHandler         [
 WEAK]
-  339 00000016                 EXPORT           USB0_IRQHandler         [WEAK]
-  340 00000016                 EXPORT           DAC0_IRQHandler         [WEAK]
-  341 00000016                 EXPORT           TSI0_IRQHandler         [WEAK]
-  342 00000016                 EXPORT           MCG_IRQHandler         [WEAK]
-  343 00000016                 EXPORT           LPTMR0_IRQHandler         [WEAK
+  334 00000016                 EXPORT           USB0_IRQHandler         [WEAK]
+  335 00000016                 EXPORT           DAC0_IRQHandler         [WEAK]
+  336 00000016                 EXPORT           TSI0_IRQHandler         [WEAK]
+  337 00000016                 EXPORT           MCG_IRQHandler         [WEAK]
+  338 00000016                 EXPORT           LPTMR0_IRQHandler         [WEAK
 ]
-  344 00000016                 EXPORT           Reserved45_IRQHandler         [
+  339 00000016                 EXPORT           Reserved45_IRQHandler         [
 WEAK]
-  345 00000016                 EXPORT           PORTA_IRQHandler         [WEAK]
-  346 00000016                 EXPORT           PORTD_IRQHandler         [WEAK]
-  347 00000016                 EXPORT           DefaultISR         [WEAK]
-  348 00000016         DMA0_IRQHandler
-  349 00000016         DMA1_IRQHandler
-  350 00000016         DMA2_IRQHandler
-  351 00000016         DMA3_IRQHandler
-  352 00000016         Reserved20_IRQHandler
-  353 00000016         FTFA_IRQHandler
-  354 00000016         LVD_LVW_IRQHandler
-  355 00000016         LLWU_IRQHandler
-  356 00000016         I2C0_IRQHandler
-  357 00000016         I2C1_IRQHandler
-  358 00000016         SPI0_IRQHandler
-  359 00000016         SPI1_IRQHandler
-  360 00000016         UART0_IRQHandler
-  361 00000016         UART1_IRQHandler
-  362 00000016         UART2_IRQHandler
-  363 00000016         ADC0_IRQHandler
-  364 00000016         CMP0_IRQHandler
-  365 00000016         TPM0_IRQHandler
-  366 00000016         TPM1_IRQHandler
-  367 00000016         TPM2_IRQHandler
-  368 00000016         RTC_IRQHandler
-  369 00000016         RTC_Seconds_IRQHandler
-  370 00000016         PIT_IRQHandler
-  371 00000016         Reserved39_IRQHandler
-  372 00000016         USB0_IRQHandler
-  373 00000016         DAC0_IRQHandler
-  374 00000016         TSI0_IRQHandler
-  375 00000016         MCG_IRQHandler
-  376 00000016         LPTMR0_IRQHandler
-  377 00000016         Reserved45_IRQHandler
-  378 00000016         PORTA_IRQHandler
-  379 00000016         PORTD_IRQHandler
-  380 00000016         DefaultISR
-  381 00000016 4806            LDR              R0, =DefaultISR
-  382 00000018 4700            BX               R0
-  383 0000001A                 ENDP
-  384 0000001A 00 00           ALIGN
-  385 0000001C         
-  386 0000001C         
-  387 0000001C         ; User Initial Stack & Heap
+  340 00000016                 EXPORT           PORTA_IRQHandler         [WEAK]
+  341 00000016                 EXPORT           PORTD_IRQHandler         [WEAK]
+  342 00000016                 EXPORT           DefaultISR         [WEAK]
+  343 00000016         DMA0_IRQHandler
+  344 00000016         DMA1_IRQHandler
+  345 00000016         DMA2_IRQHandler
+  346 00000016         DMA3_IRQHandler
+  347 00000016         Reserved20_IRQHandler
+  348 00000016         FTFA_IRQHandler
+  349 00000016         LVD_LVW_IRQHandler
+  350 00000016         LLWU_IRQHandler
+  351 00000016         I2C0_IRQHandler
+  352 00000016         I2C1_IRQHandler
+  353 00000016         SPI0_IRQHandler
+  354 00000016         SPI1_IRQHandler
+  355 00000016         UART0_IRQHandler
+  356 00000016         UART1_IRQHandler
+  357 00000016         UART2_IRQHandler
+  358 00000016         ADC0_IRQHandler
+  359 00000016         CMP0_IRQHandler
+  360 00000016         TPM0_IRQHandler
+  361 00000016         TPM1_IRQHandler
+  362 00000016         TPM2_IRQHandler
+  363 00000016         RTC_IRQHandler
+  364 00000016         RTC_Seconds_IRQHandler
+  365 00000016         PIT_IRQHandler
+  366 00000016         Reserved39_IRQHandler
+  367 00000016         USB0_IRQHandler
+  368 00000016         DAC0_IRQHandler
+  369 00000016         TSI0_IRQHandler
+  370 00000016         MCG_IRQHandler
+  371 00000016         LPTMR0_IRQHandler
+  372 00000016         Reserved45_IRQHandler
+  373 00000016         PORTA_IRQHandler
+  374 00000016         PORTD_IRQHandler
+  375 00000016         DefaultISR
+  376 00000016 4806            LDR              R0, =DefaultISR
+  377 00000018 4700            BX               R0
+  378 0000001A                 ENDP
+  379 0000001A 00 00           ALIGN
+  380 0000001C         
+  381 0000001C         
+  382 0000001C         ; User Initial Stack & Heap
+  383 0000001C         
+  384 0000001C                 IF               :DEF:__MICROLIB
+  391 0000001C         
+  392 0000001C                 IMPORT           __use_two_region_memory
+  393 0000001C                 EXPORT           __user_initial_stackheap
 
 
 
 ARM Macro Assembler    Page 10 
 
 
-  388 0000001C         
-  389 0000001C                 IF               :DEF:__MICROLIB
-  396 0000001C         
-  397 0000001C                 IMPORT           __use_two_region_memory
-  398 0000001C                 EXPORT           __user_initial_stackheap
-  399 0000001C         __user_initial_stackheap
-  400 0000001C         
-  401 0000001C 4805            LDR              R0, =  Heap_Mem
-  402 0000001E 4906            LDR              R1, =(Stack_Mem + Stack_Size)
-  403 00000020 4A04            LDR              R2, = (Heap_Mem +  Heap_Size)
-  404 00000022 4B06            LDR              R3, = Stack_Mem
-  405 00000024 4770            BX               LR
-  406 00000026         
-  407 00000026 00 00           ALIGN
-  408 00000028         
-  409 00000028                 ENDIF
-  410 00000028         
-  411 00000028         
-  412 00000028                 END
+  394 0000001C         __user_initial_stackheap
+  395 0000001C         
+  396 0000001C 4805            LDR              R0, =  Heap_Mem
+  397 0000001E 4906            LDR              R1, =(Stack_Mem + Stack_Size)
+  398 00000020 4A04            LDR              R2, = (Heap_Mem +  Heap_Size)
+  399 00000022 4B06            LDR              R3, = Stack_Mem
+  400 00000024 4770            BX               LR
+  401 00000026         
+  402 00000026 00 00           ALIGN
+  403 00000028         
+  404 00000028                 ENDIF
+  405 00000028         
+  406 00000028         
+  407 00000028                 END
               00000000 
               00000000 
               00000000 
@@ -644,8 +639,8 @@ Symbol: Stack_Mem
    Definitions
       At line 50 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
-      At line 402 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 404 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 397 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 399 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 __initial_sp 00000100
 
@@ -676,8 +671,8 @@ Symbol: Heap_Mem
    Definitions
       At line 62 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
-      At line 401 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 403 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 396 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 398 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 __heap_base 00000000
 
@@ -762,52 +757,52 @@ ADC0_IRQHandler 00000016
 
 Symbol: ADC0_IRQHandler
    Definitions
-      At line 363 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 358 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 110 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 330 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 325 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 CMP0_IRQHandler 00000016
 
 Symbol: CMP0_IRQHandler
    Definitions
-      At line 364 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 359 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 111 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 331 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 326 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 DAC0_IRQHandler 00000016
 
 Symbol: DAC0_IRQHandler
    Definitions
-      At line 373 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 368 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 120 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 340 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 335 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 DMA0_IRQHandler 00000016
 
 Symbol: DMA0_IRQHandler
    Definitions
-      At line 348 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 343 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 95 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 315 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 310 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 DMA1_IRQHandler 00000016
 
 Symbol: DMA1_IRQHandler
    Definitions
-      At line 349 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 344 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 96 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 316 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 311 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 DMA2_IRQHandler 00000016
 
 Symbol: DMA2_IRQHandler
    Definitions
-      At line 350 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 345 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
 
 
@@ -816,31 +811,31 @@ ARM Macro Assembler    Page 2 Alphabetic symbol ordering
 Relocatable symbols
 
       At line 97 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 317 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 312 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 DMA3_IRQHandler 00000016
 
 Symbol: DMA3_IRQHandler
    Definitions
-      At line 351 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 346 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 98 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 318 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 313 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 DefaultISR 00000016
 
 Symbol: DefaultISR
    Definitions
-      At line 380 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 375 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
-      At line 347 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 381 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 342 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 376 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 Default_Handler 00000016
 
 Symbol: Default_Handler
    Definitions
-      At line 314 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 309 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       None
 Comment: Default_Handler unused
@@ -848,28 +843,28 @@ FTFA_IRQHandler 00000016
 
 Symbol: FTFA_IRQHandler
    Definitions
-      At line 353 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 348 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 100 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 320 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 315 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 HardFault_Handler 0000000E
 
 Symbol: HardFault_Handler
    Definitions
-      At line 294 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 289 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 80 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 295 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 290 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 I2C0_IRQHandler 00000016
 
 Symbol: I2C0_IRQHandler
    Definitions
-      At line 356 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 351 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 103 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 323 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 318 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 I2C1_IRQHandler 00000016
 
@@ -881,64 +876,64 @@ ARM Macro Assembler    Page 3 Alphabetic symbol ordering
 Relocatable symbols
 
    Definitions
-      At line 357 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 352 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 104 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 324 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 319 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 LLWU_IRQHandler 00000016
 
 Symbol: LLWU_IRQHandler
    Definitions
-      At line 355 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 350 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 102 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 322 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 317 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 LPTMR0_IRQHandler 00000016
 
 Symbol: LPTMR0_IRQHandler
    Definitions
-      At line 376 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 371 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 123 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 343 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 338 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 LVD_LVW_IRQHandler 00000016
 
 Symbol: LVD_LVW_IRQHandler
    Definitions
-      At line 354 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 349 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 101 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 321 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 316 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 MCG_IRQHandler 00000016
 
 Symbol: MCG_IRQHandler
    Definitions
-      At line 375 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 370 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 122 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 342 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 337 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 NMI_Handler 0000000C
 
 Symbol: NMI_Handler
    Definitions
-      At line 289 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 284 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 79 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 290 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 285 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 PIT_IRQHandler 00000016
 
 Symbol: PIT_IRQHandler
    Definitions
-      At line 370 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 365 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 117 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 337 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 332 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 
 
@@ -950,55 +945,55 @@ PORTA_IRQHandler 00000016
 
 Symbol: PORTA_IRQHandler
    Definitions
-      At line 378 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 373 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 125 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 345 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 340 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 PORTD_IRQHandler 00000016
 
 Symbol: PORTD_IRQHandler
    Definitions
-      At line 379 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 374 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 126 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 346 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 341 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 PendSV_Handler 00000012
 
 Symbol: PendSV_Handler
    Definitions
-      At line 304 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 299 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 91 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 305 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 300 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 RTC_IRQHandler 00000016
 
 Symbol: RTC_IRQHandler
    Definitions
-      At line 368 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 363 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 115 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 335 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 330 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 RTC_Seconds_IRQHandler 00000016
 
 Symbol: RTC_Seconds_IRQHandler
    Definitions
-      At line 369 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 364 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 116 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 336 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 331 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 Reserved20_IRQHandler 00000016
 
 Symbol: Reserved20_IRQHandler
    Definitions
-      At line 352 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 347 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 99 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 319 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 314 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 Reserved39_IRQHandler 00000016
 
@@ -1010,19 +1005,19 @@ Symbol: Reserved39_IRQHandler
 ARM Macro Assembler    Page 5 Alphabetic symbol ordering
 Relocatable symbols
 
-      At line 371 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 366 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 118 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 338 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 333 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 Reserved45_IRQHandler 00000016
 
 Symbol: Reserved45_IRQHandler
    Definitions
-      At line 377 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 372 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 124 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 344 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 339 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 Reset_Handler 00000000
 
@@ -1037,37 +1032,37 @@ SPI0_IRQHandler 00000016
 
 Symbol: SPI0_IRQHandler
    Definitions
-      At line 358 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 353 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 105 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 325 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 320 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 SPI1_IRQHandler 00000016
 
 Symbol: SPI1_IRQHandler
    Definitions
-      At line 359 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 354 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 106 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 326 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 321 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 SVC_Handler 00000010
 
 Symbol: SVC_Handler
    Definitions
-      At line 299 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 294 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 88 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 300 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 295 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 SysTick_Handler 00000014
 
 Symbol: SysTick_Handler
    Definitions
-      At line 309 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 304 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 92 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 310 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 305 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 
 
@@ -1079,61 +1074,61 @@ TPM0_IRQHandler 00000016
 
 Symbol: TPM0_IRQHandler
    Definitions
-      At line 365 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 360 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 112 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 332 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 327 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 TPM1_IRQHandler 00000016
 
 Symbol: TPM1_IRQHandler
    Definitions
-      At line 366 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 361 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 113 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 333 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 328 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 TPM2_IRQHandler 00000016
 
 Symbol: TPM2_IRQHandler
    Definitions
-      At line 367 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 362 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 114 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 334 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 329 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 TSI0_IRQHandler 00000016
 
 Symbol: TSI0_IRQHandler
    Definitions
-      At line 374 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 369 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 121 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 341 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 336 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 UART0_IRQHandler 00000016
 
 Symbol: UART0_IRQHandler
    Definitions
-      At line 360 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 355 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 107 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 327 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 322 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 UART1_IRQHandler 00000016
 
 Symbol: UART1_IRQHandler
    Definitions
-      At line 361 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 356 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 108 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 328 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 323 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 UART2_IRQHandler 00000016
 
 Symbol: UART2_IRQHandler
    Definitions
-      At line 362 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 357 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 
 
@@ -1142,24 +1137,24 @@ Relocatable symbols
 
    Uses
       At line 109 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 329 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 324 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 USB0_IRQHandler 00000016
 
 Symbol: USB0_IRQHandler
    Definitions
-      At line 372 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 367 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 119 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 339 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 334 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 __user_initial_stackheap 0000001C
 
 Symbol: __user_initial_stackheap
    Definitions
-      At line 399 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 394 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
-      At line 398 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 393 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 Comment: __user_initial_stackheap used once
 42 symbols
 
@@ -1299,7 +1294,7 @@ ARM Macro Assembler    Page 3 Alphabetic symbol ordering
 Absolute symbols
 
       At line 62 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 403 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 398 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 Stack_Size 00000100
 
@@ -1308,7 +1303,7 @@ Symbol: Stack_Size
       At line 47 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       At line 50 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
-      At line 402 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 397 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 __Vectors_Size 000000C0
 
@@ -1363,7 +1358,7 @@ Symbol: SystemInit
    Definitions
       At line 267 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
-      At line 279 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 274 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 Comment: SystemInit used once
 __main 00000000
 
@@ -1371,13 +1366,13 @@ Symbol: __main
    Definitions
       At line 268 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
-      At line 282 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 277 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 Comment: __main used once
 __use_two_region_memory 00000000
 
 Symbol: __use_two_region_memory
    Definitions
-      At line 397 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
+      At line 392 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
    Uses
       None
 Comment: __use_two_region_memory unused

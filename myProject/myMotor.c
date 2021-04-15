@@ -82,7 +82,7 @@ void rightForward() {
 	TPM1_C0V = 0; //TPM1_CH1 left forward
 	
 	TPM1_C1V = ACTIVE;
-	TPM2_C1V = ACTIVE/6; //TPM2_CH1 right forward slower
+	TPM2_C1V = 625; //TPM2_CH1 right forward slower
 }
 // Remvove for TPM1 and /8 for TPM2
 void rightReverse() {
@@ -126,17 +126,32 @@ void selfLeft() {
 }
 
 void selfRight() {
-	turnRight();
-	delay(0xB1008);
-	stop();
-	delay(0xFFFFF);
+	TPM1->MOD = 7500;
+	TPM2->MOD = 7500;
+	
+	TPM2_C0V = 0;	
+	TPM1_C0V = 0; //TPM1_CH1 left forward
+	
+	TPM1_C1V = LESS_ACTIVE;
+	TPM2_C1V = 625; //TPM2_CH1 right forward slower
+}
+
+void selfForward() {
+	TPM1->MOD = 7500;
+	TPM2->MOD = 7500;
+	
+	TPM1_C0V = 0; 
+	TPM2_C0V = 0;
+	
+	TPM1_C1V = LESS_ACTIVE; //TPM1_CH1 left forward
+	TPM2_C1V = LESS_ACTIVE; //TPM2_CH1 right forward
 }
 
 void shortForward() {
 	forward();
-	delay(0xB3330);
+	osDelay(200);
 	stop();
-	delay(0xFFFFF);
+	//osDelay(5000);
 }
 
 void longForward() {
@@ -149,29 +164,37 @@ void longForward() {
 void uturn() {
 	
 	turnLeft();
-	osDelay(250);
+	osDelay(400);
 	stop();
 	osDelay(500);
 	forward();
-	osDelay(350);
+	osDelay(300);
 	stop();
-	osDelay(500);
-	rightForward();
-	osDelay(500);
+	osDelay(2000);
+	selfRight();
+	osDelay(1000);
 	stop();
-	osDelay(500);
-	rightForward();
-	osDelay(500);
+	osDelay(2000);
+	selfRight();
+	osDelay(1000);
 	stop();
-	osDelay(500);
-	rightForward();
-	osDelay(500);
+	osDelay(2000);
+	selfRight();
+	osDelay(1000);
 	stop();
-	osDelay(500);
-	rightForward();
-	osDelay(500);
+	osDelay(2000);
+	selfRight();
+	osDelay(1000);
 	stop();
-	osDelay(500);
+	osDelay(2000);
+	selfForward();
+	osDelay(400);
+	stop();
+	osDelay(400);
+	//rightForward();
+	//osDelay(1000);
+	//stop();
+	//osDelay(2000);
 	turnLeft();
 	osDelay(400);
 	stop();

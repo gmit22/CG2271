@@ -30,10 +30,23 @@
 
 //uint8_t rx_data;
 char isMove = 0;
-uint32_t end = 0x0000;
+volatile uint32_t end = 0x0000;
 uint32_t distance = 0x00;
+volatile uint32_t gettingPITdistance = 0x00;
+volatile uint32_t pitCounter = 0x00;
+uint32_t pitValue = 0x00;
+float pitDistance = 0;
+int selfDriveFlag = 1;
+
+volatile int ready;
+volatile uint32_t start;
+volatile uint32_t startRecord;
 
 osMessageQueueId_t ultrasonicMessage;
+osMessageQueueId_t ultrasonicDistance;
+
+
+osMutexId_t myMutex;
 
 const osThreadAttr_t maxPriority = {
 	.priority = osPriorityRealtime
@@ -59,36 +72,48 @@ void bluetoothConnected() {
 	//playConnectSong(); 
 }
 
-void TPM0_IRQHandler(void) // what is the interrupt logic
-{
-	NVIC_ClearPendingIRQ(TPM0_IRQn); //clear queue before begin;
+void PORTD_IRQHandler() {
+		// Clear Pending IRQ
+		NVIC_ClearPendingIRQ(PORTD_IRQn); // Not necessary, but for legacy reasons
 		
-	if(TPM0_C3SC & TPM_CnSC_CHF_MASK){  // If CHF = channel is 1 when an event occur- cleared by writing 1 
-		TPM0_C3SC |= TPM_CnSC_CHF_MASK;
+		// Updating some variable / flag
+	//if (PTD -> PDIR & MASK (PTD3_Pin)){
 		if(!start){
-			/*Clear the TPM0 counter register to start with ~0 */
-			TPM0_CNT = 0;
-			startRecord = TPM0_CNT; 
-			start = 1;
-		} else {
-			end = TPM0_C3V + counter * 3750; //tpm0_c3V is counter value
-			//counter = 0;
-			ready = 1;
-			//value = (end * 2.6666 * 0.01715 * 1.5) - 337 ;  // determine speed of ultrasonic from frequency and speedy of sound = 34300cm/s /2 =17150;
-			//osMessageQueuePut(ultrasonicMessage, &end, NULL, 0);
-			//osDelay(2000);
-			//SIM->SCGC6 &= ~SIM_SCGC6_TPM0_MASK;
-		}
+				/*Clear the TPM0 counter register to start with ~0 */
+				startRecord = PIT_CVAL0; 
+				start = 1;
+			} else {
+				end = PIT_CVAL0;// + counter * 3750; //tpm0_c3V is counter value
+				//counter = 0;
+				ready = 1;
+				if ((startRecord -end) > 0) {
+					pitValue = startRecord-end + 0x3FFFFF * pitCounter;
+				} else if ((end-startRecord) > 0)  {              
+						pitValue = end + (0x3FFFFF- startRecord)+ 0x3FFFFF * pitCounter;
+				}
+				
+				pitCounter =0;
+				osMessageQueuePut(ultrasonicMessage, &pitValue, NULL, 0);
+
+			}
+		//}
+
+							
+				//value = (end * 2.6666 * 0.01715 * 1.5) - 337 ;  // determine speed of ultrasonic from frequency and speedy of sound = 34300cm/s /2 =17150;
+				//osMessageQueuePut(ultrasonicMessage, &end, NULL, 0);
+				//osDelay(2000);
+				//SIM->SCGC6 &= ~SIM_SCGC6_TPM0_MASK;
+		
+		//Clear INT Flag
+		PORTD->ISFR |= MASK(PTD3_Pin); // ISFR = Interrupt Status Flag Register. Important to clear it (1 to clear the flag to stop sending interrupt requests)
 	}
-	
-	if(TPM0_SC & TPM_SC_TOF_MASK) { //checking for overflow so that it resets when hit and counter = 1 cycle.
-		TPM0_SC |= TPM_SC_TOF_MASK;
-		counter++; 
-	}
- //osDelay (100);
-	
-	//PORTD->ISFR |= 0xFFFFF;
-}
+void PIT_IRQHandler(){
+  if (PIT->CHANNEL[0].TFLG & PIT_TFLG_TIF_MASK) {
+    pitCounter++; 
+    //Clear interrupt request flag for channel 
+    PIT->CHANNEL[0].TFLG &= PIT_TFLG_TIF_MASK; 
+  }
+}  
 
 //Check and update flags if the device is in moving state
 char isMoving() {
@@ -109,6 +134,7 @@ void tAudio(void *arguement) {
 	
 	for (;;) {
 		playRaceSong();
+
 	}	
 }
 
@@ -144,46 +170,47 @@ void tFrontLED(void *arguement) {
 }
 
 /*----------------------------------------------------------------------------
+ * Application tUltrasonicThread
+ *---------------------------------------------------------------------------*/
+void tUltrasonicThread(void *argument) {
+	for(;;) {
+		osSemaphoreRelease(triggerSem);
+					
+					osMessageQueueGet(ultrasonicMessage, &distance, NULL, osWaitForever);
+					while(!ready) {}
+						gettingPITdistance = distance;
+					start = 0;
+
+	}
+}
+
+/*----------------------------------------------------------------------------
  * Application tSelfDriveThread
  *---------------------------------------------------------------------------*/
 void tSelfDriveThread(void *argument) {
-	initUltrasonic();
-	for (;;) {
-		//initUltrasonic();
-			SIM->SCGC6 |= SIM_SCGC6_TPM0_MASK;
-		osSemaphoreAcquire(selfDriveSem, osWaitForever); 
-			while(1){
-				SIM->SCGC6 |= SIM_SCGC6_TPM0_MASK;
-
-				//value =0;
-				//counter =0;
-				//distance =0;
-			osSemaphoreRelease(triggerSem);
-			//osMessageQueueGet(ultrasonicMessage, &distance, NULL, osWaitForever);
-					while(!ready) {}
-//						if ((end - startRecord) > 0) {
-//							value = end - startRecord;
-//						} else if ((startRecord - end) > 0)  {
-//							value = end + 7500 - startRecord;
-//						}
-					distance = end - startRecord;
-					start = 0;
-					value = (distance* 2.6666 * 0.01715);// * 1.5) - 337 ;  // determine speed of ultrasonic from frequency and speedy of sound = 34300cm/s /2 =17150;
-					counter = 0x0000;
-						ready = 0;
-					SIM->SCGC6 &= ~SIM_SCGC6_TPM0_MASK;
-						//end=0;
-						//value=0;
-					//osDelay(100);
-						//forward();
-						//delay(0xFFFFF);
-						//stop();
-			}
+		
+		for (;;) {
+			osSemaphoreAcquire(selfDriveSem, osWaitForever);
 			
-		//osDelay(1000);
-		//osSemaphoreRelease(selfDriveSem);
-		//osSemaphoreRelease(triggerSem);
-	}
+				while(selfDriveFlag){
+					pitDistance = (gettingPITdistance * 0.028333 * 0.01715)  + 4;
+
+					if (pitDistance < 35) {
+						//pitDistance = (distance * 0.028333 * 0.01715)  + 4;
+
+						selfDriveFlag = 0;
+					}
+					shortForward();
+					osDelay(2000);
+				}
+				uturn();
+				selfDriveFlag = 1;
+				
+			//osDelay(1000);
+			//osSemaphoreRelease(selfDriveSem);
+			//osSemaphoreRelease(triggerSem);
+				//osMutexRelease(myMutex);
+		}
 }
 
 /*----------------------------------------------------------------------------
@@ -197,7 +224,6 @@ void tTriggerThread(void *argument) {
 	
 		//Off trigger after 10 seconds
 		PTD->PDOR &= ~MASK(PTD2_Pin);
-		//delay(0x18e70);
 		osDelay(10);
 	}
 }	
@@ -211,42 +237,31 @@ void tMotorThread (void *argument) {
 		switch(userSignal) {
 			case NORTH:
 				forward();
-				//uturn();
-				//state = FORWARD;
 				break;
 			case SOUTH:
 				reverse();
-				//state = REVERSE;
 				break;
 			case EAST:
 				turnRight();
-				//state = RIGHT;
 				break;
 			case WEST:
 				turnLeft();
-				//state = LEFT;
 				break;
 			case NORTH_EAST:
 				rightForward();
-				//state = RIGHTFW;
 				break;
 			case SOUTH_EAST:
 				rightReverse();
-				//state = RIGHTRV;
 				break;
 			case SOUTH_WEST:
 				leftReverse();
-				//state = LEFTRV;
 				break;
 			case NORTH_WEST:
-				uturn();
-				//leftForward();
-				//state = LEFTFW;
+				leftForward();
 				break;
 			default:
 				stop();
 				userSignal = STOP;
-				//state = HALT;
 		}
 	}
 }
@@ -261,8 +276,7 @@ void tBrainThread (void *argument) {
 		switch(userSignal) {
 			case END:
 				playEndSong();
-			break;
-			
+				break;
 			case NORTH:
 			case SOUTH:
 			case EAST:
@@ -291,6 +305,7 @@ int main (void) {
 	setupUART2(BAUD_RATE);
 	initLED();
 	initPWM();  //Can please check if this PWM is for the motors or the sound?
+	initUltrasonic();
 	offLEDModules();
   osKernelInitialize();                 // Initialize CMSIS-RTOS
 	
@@ -300,9 +315,10 @@ int main (void) {
 	soundSem = osSemaphoreNew(1, 1, NULL);
 	selfDriveSem = osSemaphoreNew(1, 0, NULL);
 	triggerSem = osSemaphoreNew(1, 0, NULL);
+	myMutex = osMutexNew(NULL);
 	
 	ultrasonicMessage = osMessageQueueNew(1, sizeof(uint32_t), NULL);
-	
+
 	//Wair for bluetooth connectivity 
 	while (userSignal != CONNECTION);
 	bluetoothConnected();
@@ -314,8 +330,7 @@ int main (void) {
   osThreadNew(tRearLED, NULL, NULL);
 	osThreadNew(tFrontLED, NULL, NULL);
 	osThreadNew(tMotorThread, NULL, NULL);
-
-	
+	osThreadNew(tUltrasonicThread, NULL, NULL);
 	
   osKernelStart();                      // Start thread execution
   for (;;) {}

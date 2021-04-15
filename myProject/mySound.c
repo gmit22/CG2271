@@ -78,10 +78,10 @@ void playRaceSong() {
 			period = TO_MOD(starWarsMelody[i]);
 			TPM0->MOD = period;
 			TPM0_C0V = period / 4; //12.5% duty cycle
-			osDelay(noteDuration); //*25
+			osDelay(noteDuration/2); //*25
 			//TPM0->MOD = 0;
 			TPM0_C0V = 0;
-			osDelay(noteDuration); // *24
+			osDelay(noteDuration/2); // *24
 		}
 		
 	//}

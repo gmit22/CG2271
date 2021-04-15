@@ -16,9 +16,9 @@
 
 extern volatile uint32_t read;
 
-extern volatile int ready;
-extern volatile uint32_t start;
-extern volatile uint32_t startRecord;
+//extern volatile int ready;
+//extern volatile uint32_t start;
+//extern volatile uint32_t startRecord;
 extern float value;
 
 extern volatile int orange;

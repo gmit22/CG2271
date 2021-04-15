@@ -270,11 +270,6 @@ Reset_Handler   PROC
 
 
 
-
-
-
-
-
 				CPSID   I               ; Mask interrupts
                 LDR     R0, =SystemInit
                 BLX     R0
