@@ -218,7 +218,7 @@ void tSelfDriveThread(void *argument) {
 					osDelay(1500);
 				
 				uturn();
-			  osDelay(500);
+			  osDelay(2000);
 				selfDriveFlagLED = 0;
 
 			
