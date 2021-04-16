@@ -154,8 +154,8 @@ void shortForward() {
 	TPM1_C0V = 0; 
 	TPM2_C0V = 0;
 	
-	TPM1_C1V = 1150;//LESS_LESS_ACTIVE/2; //TPM1_CH1 left forward
-	TPM2_C1V = 1150;//LESS_LESS_ACTIVE/2; //TPM2_CH1 right forward
+	TPM1_C1V = 2250;//LESS_LESS_ACTIVE/2; //TPM1_CH1 left forward
+	TPM2_C1V = 2250;//LESS_LESS_ACTIVE/2; //TPM2_CH1 right forward
 	
 }
 void comingBack() {
