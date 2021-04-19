@@ -303,9 +303,7 @@ void tBrainThread (void *argument) {
 		
 		switch(userSignal) {
 			case END:
-				//osMutexRelease(myMutex);
 				endRaceSong = 0; 
-				//playEndSong();
 				break;
 			case NORTH:
 			case SOUTH:
@@ -323,7 +321,6 @@ void tBrainThread (void *argument) {
 				osSemaphoreRelease(selfDriveSem);
 				break;
 			default:
-				//stop();
 				break;
 		}
 	}
