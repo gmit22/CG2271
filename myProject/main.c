@@ -38,19 +38,13 @@ uint32_t pitValue = 0x00;
 float pitDistance = 0;
 int selfDriveFlag = 1;
 int selfReturnFlag = 1;
-<<<<<<< HEAD
+
 int ready;
 uint32_t start;
 uint32_t startRecord;
-=======
-
 int selfDriveFlagLED = 0;
 
-volatile int ready;
-volatile uint32_t start;
-volatile uint32_t startRecord;
 
->>>>>>> 7e2d86702705a254dcec9640e5b271ab36721906
 
 
 osMessageQueueId_t ultrasonicMessage;
@@ -174,18 +168,10 @@ void tFrontLED(void *arguement) {
  *---------------------------------------------------------------------------*/
 void tUltrasonicThread(void *argument) {
 	for(;;) {
-<<<<<<< HEAD
+
 		osSemaphoreRelease(triggerSem);	
 		osMessageQueueGet(ultrasonicMessage, &distance, NULL, osWaitForever);
 		gettingPITdistance = distance;
-=======
-		osSemaphoreRelease(triggerSem);
-					
-					osMessageQueueGet(ultrasonicMessage, &distance, NULL, osWaitForever);
-					while(!ready) {}
-					gettingPITdistance = distance;
-					start = 0;
->>>>>>> 7e2d86702705a254dcec9640e5b271ab36721906
 
 	}
 }
@@ -205,25 +191,17 @@ void tSelfDriveThread(void *argument) {
 					while (pitDistance > 3 ) {
 						pitDistance = (gettingPITdistance * 0.028333 * 0.01715)  + 4;
 						shortForward();
-<<<<<<< HEAD
-					}
-					
-				stop();
-				osDelay(1500);
-					
-=======
 						osDelay(50);
 						if ((pitDistance < 45) && (pitDistance > 16) ) {
 							stop();
 							break;
 						}
 					}
-					//shortForward();
+
 					selfDriveFlag = 0;
 					stop();
 					osDelay(1500);
-				
->>>>>>> 7e2d86702705a254dcec9640e5b271ab36721906
+
 				uturn();
 			  osDelay(1000);
 				selfDriveFlagLED = 0;
@@ -243,12 +221,9 @@ void tSelfDriveThread(void *argument) {
 					}
 				}
 				stop();
-<<<<<<< HEAD
-				selfDriveFlag = 0;
 
-=======
 				selfDriveFlagLED = 0;
->>>>>>> 7e2d86702705a254dcec9640e5b271ab36721906
+
 			}
 		}
 }
