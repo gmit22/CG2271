@@ -133,7 +133,7 @@ void selfRight() {
 	TPM1_C0V = 0; //TPM1_CH1 left forward
 	
 	TPM1_C1V = ACTIVE;
-	TPM2_C1V = 625; //TPM2_CH1 right forward slower
+	TPM2_C1V = 1250; //TPM2_CH1 right forward slower
 }
 
 void selfForward() {
@@ -154,8 +154,8 @@ void shortForward() {
 	TPM1_C0V = 0; 
 	TPM2_C0V = 0;
 	
-	TPM1_C1V = 1250;//LESS_LESS_ACTIVE/2; //TPM1_CH1 left forward
-	TPM2_C1V = 1250;//LESS_LESS_ACTIVE/2; //TPM2_CH1 right forward
+	TPM1_C1V = 2700;//LESS_LESS_ACTIVE/2; //TPM1_CH1 left forward
+	TPM2_C1V = 2700;//LESS_LESS_ACTIVE/2; //TPM2_CH1 right forward
 	
 }
 void comingBack() {
@@ -182,7 +182,7 @@ void uturn() {
 	stop();
 	osDelay(700);
 	turnLeft();
-	osDelay(400);
+	osDelay(250);
 	stop();
 	osDelay(2000);
 	forward();
@@ -204,13 +204,21 @@ void uturn() {
 	selfRight(); 
 	osDelay(700);
 	stop();
-	osDelay(2000);
+	osDelay(1000);
 	selfForward(); 
+<<<<<<< HEAD
 	osDelay(550); 
   stop();
 	osDelay(2000);
 	turnLeft();
 	osDelay(450); 
+=======
+	osDelay(450); // change from 650
+  //stop();
+	//osDelay(2000);
+	turnLeft();
+	osDelay(400); //was 400 need more left //lab 500 90degree
+>>>>>>> 7e2d86702705a254dcec9640e5b271ab36721906
 	stop();
 	
 }

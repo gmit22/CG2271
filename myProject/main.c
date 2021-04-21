@@ -38,9 +38,19 @@ uint32_t pitValue = 0x00;
 float pitDistance = 0;
 int selfDriveFlag = 1;
 int selfReturnFlag = 1;
+<<<<<<< HEAD
 int ready;
 uint32_t start;
 uint32_t startRecord;
+=======
+
+int selfDriveFlagLED = 0;
+
+volatile int ready;
+volatile uint32_t start;
+volatile uint32_t startRecord;
+
+>>>>>>> 7e2d86702705a254dcec9640e5b271ab36721906
 
 
 osMessageQueueId_t ultrasonicMessage;
@@ -66,7 +76,7 @@ void bluetoothConnected() {
 	flashGREEN_Twice();
 	userSignal = STOP;
 	//Code to play a sound when bluetooth is connected to the Freedom Board.
-	playConnectSong(); 
+	//playConnectSong(); 
 }
 
 void PORTD_IRQHandler() {
@@ -105,12 +115,13 @@ void PIT_IRQHandler(){
 //Check and update flags if the device is in moving state
 char isMoving() {
 	
-	if (userSignal == STOP || userSignal == END) {
+	if ((userSignal == STOP && selfDriveFlagLED == 0) || userSignal == END) {
 		isMove = 0;
 	} else if (userSignal == NORTH || userSignal == SOUTH || userSignal == EAST || userSignal == WEST 
-					|| userSignal == NORTH_EAST || userSignal == NORTH_WEST || userSignal == SOUTH_EAST || userSignal == SOUTH_WEST) {
+					|| userSignal == NORTH_EAST || userSignal == NORTH_WEST || userSignal == SOUTH_EAST || userSignal == SOUTH_WEST ||selfDriveFlagLED == 1) {
 					isMove = 1;
 	}
+					
 	return isMove;	
 }
 
@@ -163,9 +174,18 @@ void tFrontLED(void *arguement) {
  *---------------------------------------------------------------------------*/
 void tUltrasonicThread(void *argument) {
 	for(;;) {
+<<<<<<< HEAD
 		osSemaphoreRelease(triggerSem);	
 		osMessageQueueGet(ultrasonicMessage, &distance, NULL, osWaitForever);
 		gettingPITdistance = distance;
+=======
+		osSemaphoreRelease(triggerSem);
+					
+					osMessageQueueGet(ultrasonicMessage, &distance, NULL, osWaitForever);
+					while(!ready) {}
+					gettingPITdistance = distance;
+					start = 0;
+>>>>>>> 7e2d86702705a254dcec9640e5b271ab36721906
 
 	}
 }
@@ -182,31 +202,53 @@ void tSelfDriveThread(void *argument) {
 					pitDistance = (gettingPITdistance * 0.028333 * 0.01715)  + 4; // scaling pitDistance to measurable value
 					forward();
 					osDelay(200);
-					while (pitDistance > 45) {
+					while (pitDistance > 3 ) {
 						pitDistance = (gettingPITdistance * 0.028333 * 0.01715)  + 4;
 						shortForward();
+<<<<<<< HEAD
 					}
 					
 				stop();
 				osDelay(1500);
 					
+=======
+						osDelay(50);
+						if ((pitDistance < 45) && (pitDistance > 16) ) {
+							stop();
+							break;
+						}
+					}
+					//shortForward();
+					selfDriveFlag = 0;
+					stop();
+					osDelay(1500);
+				
+>>>>>>> 7e2d86702705a254dcec9640e5b271ab36721906
 				uturn();
-			  osDelay(1500);
+			  osDelay(1000);
+				selfDriveFlagLED = 0;
 
+			
 				while(selfReturnFlag){
+					selfDriveFlagLED = 1;
 					pitDistance = (gettingPITdistance * 0.028333 * 0.01715)  + 4;
 
-					if (pitDistance < 45) {
-						selfReturnFlag = 0;
-					}
 					comingBack();
-					osDelay(750);
+					osDelay(1000);
 					stop();
-					osDelay(2000);
+					osDelay(300);
+					if ((pitDistance < 55) && (pitDistance > 5) ) {
+						stop();
+						break;
+					}
 				}
 				stop();
+<<<<<<< HEAD
 				selfDriveFlag = 0;
 
+=======
+				selfDriveFlagLED = 0;
+>>>>>>> 7e2d86702705a254dcec9640e5b271ab36721906
 			}
 		}
 }
@@ -287,6 +329,7 @@ void tBrainThread (void *argument) {
 				osSemaphoreRelease(moveSem);
 				break;
 			case SELF_DRIVE:
+				selfDriveFlagLED = 1;
 				osSemaphoreRelease(selfDriveSem);
 				break;
 			default:
@@ -299,7 +342,7 @@ void tBrainThread (void *argument) {
 int main (void) {
  
   //System Initialization 
-	SystemCoreClockUpdate();
+		SystemCoreClockUpdate();
 	setupUART2(BAUD_RATE);
 	initLED();
 	initPWM();  
