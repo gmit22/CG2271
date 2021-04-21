@@ -31,6 +31,7 @@
 //uint8_t rx_data;
 char isMove = 0;
 volatile uint32_t end = 0x0000;
+uint32_t distance = 0x00;
 volatile uint32_t gettingPITdistance = 0x00;
 volatile uint32_t pitCounter = 0x00;
 uint32_t pitValue = 0x00;
@@ -312,7 +313,6 @@ int main (void) {
 	soundSem = osSemaphoreNew(1, 1, NULL);
 	selfDriveSem = osSemaphoreNew(1, 0, NULL);
 	triggerSem = osSemaphoreNew(1, 0, NULL);
-	myMutex = osMutexNew(NULL);
 	
 	ultrasonicMessage = osMessageQueueNew(1, sizeof(uint32_t), NULL);
 
