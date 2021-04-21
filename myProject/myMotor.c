@@ -154,8 +154,8 @@ void shortForward() {
 	TPM1_C0V = 0; 
 	TPM2_C0V = 0;
 	
-	TPM1_C1V = 2250;//LESS_LESS_ACTIVE/2; //TPM1_CH1 left forward
-	TPM2_C1V = 2250;//LESS_LESS_ACTIVE/2; //TPM2_CH1 right forward
+	TPM1_C1V = 2700;//LESS_LESS_ACTIVE/2; //TPM1_CH1 left forward
+	TPM2_C1V = 2700;//LESS_LESS_ACTIVE/2; //TPM2_CH1 right forward
 	
 }
 void comingBack() {
@@ -204,13 +204,13 @@ void uturn() {
 	selfRight(); //may need change
 	osDelay(700);
 	stop();
-	osDelay(2000);
-	//selfForward(); 
-	//osDelay(300); // change from 650
+	osDelay(1000);
+	selfForward(); 
+	osDelay(450); // change from 650
   //stop();
 	//osDelay(2000);
 	turnLeft();
-	osDelay(300); //was 400 need more left //lab 500 90degree
+	osDelay(400); //was 400 need more left //lab 500 90degree
 	stop();
 	
 

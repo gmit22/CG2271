@@ -207,7 +207,8 @@ void tSelfDriveThread(void *argument) {
 					while (pitDistance > 3 ) {
 						pitDistance = (gettingPITdistance * 0.028333 * 0.01715)  + 4;
 						shortForward();
-						if ((pitDistance < 35) && (pitDistance > 16) ) {
+						osDelay(50);
+						if ((pitDistance < 45) && (pitDistance > 16) ) {
 							stop();
 							break;
 						}
@@ -218,7 +219,7 @@ void tSelfDriveThread(void *argument) {
 					osDelay(1500);
 				
 				uturn();
-			  //osDelay(1000);
+			  osDelay(1000);
 				selfDriveFlagLED = 0;
 
 			
@@ -229,8 +230,8 @@ void tSelfDriveThread(void *argument) {
 					comingBack();
 					osDelay(1000);
 					stop();
-					osDelay(400);
-					if ((pitDistance < 50) && (pitDistance > 5) ) {
+					osDelay(300);
+					if ((pitDistance < 55) && (pitDistance > 5) ) {
 						stop();
 						break;
 					}
