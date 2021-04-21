@@ -39,19 +39,17 @@ float pitDistance = 0;
 int selfDriveFlag = 1;
 int selfReturnFlag = 1;
 
+int ready;
+uint32_t start;
+uint32_t startRecord;
 int selfDriveFlagLED = 0;
 
-volatile int ready;
-volatile uint32_t start;
-volatile uint32_t startRecord;
 
 
 
 osMessageQueueId_t ultrasonicMessage;
 osMessageQueueId_t ultrasonicDistance;
 
-
-//osMutexId_t myMutex;
 
 const osThreadAttr_t maxPriority = {
 	.priority = osPriorityRealtime
@@ -70,8 +68,6 @@ const osThreadAttr_t highPriority = {
 
 void bluetoothConnected() {
 	flashGREEN_Twice();
-	//flashRED_Moving();
-	//delay(1000);
 	userSignal = STOP;
 	//Code to play a sound when bluetooth is connected to the Freedom Board.
 	//playConnectSong(); 
@@ -79,36 +75,26 @@ void bluetoothConnected() {
 
 void PORTD_IRQHandler() {
 		// Clear Pending IRQ
-		NVIC_ClearPendingIRQ(PORTD_IRQn); // Not necessary, but for legacy reasons
+		NVIC_ClearPendingIRQ(PORTD_IRQn); 
 		
-		// Updating some variable / flag
-	//if (PTD -> PDIR & MASK (PTD3_Pin)){
 		if(!start){
-				/*Clear the TPM0 counter register to start with ~0 */
-				startRecord = PIT_CVAL0; 
+				startRecord = PIT_CVAL0; // Storing PIT counter value into startRecord
 				start = 1;
 			} else {
-				end = PIT_CVAL0;// + counter * 3750; //tpm0_c3V is counter value
-				//counter = 0;
+				end = PIT_CVAL0; // Loading current PIT counter value into end
 				ready = 1;
-				if ((startRecord -end) > 0) {
+				if ((startRecord -end) > 0) { 
 					pitValue = startRecord-end + 0x3FFFFF * pitCounter;
-				} else if ((end-startRecord) > 0)  {              
+				} else if ((end-startRecord) > 0)  {              // accounting for timeout
 						pitValue = end + (0x3FFFFF- startRecord)+ 0x3FFFFF * pitCounter;
 				}
 				
 				pitCounter =0;
+				start = 0; 
 				osMessageQueuePut(ultrasonicMessage, &pitValue, NULL, 0);
 
 			}
-		//}
 
-							
-				//value = (end * 2.6666 * 0.01715 * 1.5) - 337 ;  // determine speed of ultrasonic from frequency and speedy of sound = 34300cm/s /2 =17150;
-				//osMessageQueuePut(ultrasonicMessage, &end, NULL, 0);
-				//osDelay(2000);
-				//SIM->SCGC6 &= ~SIM_SCGC6_TPM0_MASK;
-		
 		//Clear INT Flag
 		PORTD->ISFR |= MASK(PTD3_Pin); // ISFR = Interrupt Status Flag Register. Important to clear it (1 to clear the flag to stop sending interrupt requests)
 	}
@@ -182,18 +168,16 @@ void tFrontLED(void *arguement) {
  *---------------------------------------------------------------------------*/
 void tUltrasonicThread(void *argument) {
 	for(;;) {
-		osSemaphoreRelease(triggerSem);
-					
-					osMessageQueueGet(ultrasonicMessage, &distance, NULL, osWaitForever);
-					while(!ready) {}
-					gettingPITdistance = distance;
-					start = 0;
+
+		osSemaphoreRelease(triggerSem);	
+		osMessageQueueGet(ultrasonicMessage, &distance, NULL, osWaitForever);
+		gettingPITdistance = distance;
 
 	}
 }
 
 /*----------------------------------------------------------------------------
- * Application tSelfDriveThread
+ * Application tSelfDriveThread - Set to run once only. 
  *---------------------------------------------------------------------------*/
 void tSelfDriveThread(void *argument) {
 		
@@ -201,7 +185,7 @@ void tSelfDriveThread(void *argument) {
 			osSemaphoreAcquire(selfDriveSem, osWaitForever);
 			
 				while(selfDriveFlag){
-					pitDistance = (gettingPITdistance * 0.028333 * 0.01715)  + 4;
+					pitDistance = (gettingPITdistance * 0.028333 * 0.01715)  + 4; // scaling pitDistance to measurable value
 					forward();
 					osDelay(200);
 					while (pitDistance > 3 ) {
@@ -213,11 +197,11 @@ void tSelfDriveThread(void *argument) {
 							break;
 						}
 					}
-					//shortForward();
+
 					selfDriveFlag = 0;
 					stop();
 					osDelay(1500);
-				
+
 				uturn();
 			  osDelay(1000);
 				selfDriveFlagLED = 0;
@@ -237,7 +221,9 @@ void tSelfDriveThread(void *argument) {
 					}
 				}
 				stop();
+
 				selfDriveFlagLED = 0;
+
 			}
 		}
 }
@@ -249,9 +235,9 @@ void tTriggerThread(void *argument) {
 	for (;;) {
 		osSemaphoreAcquire(triggerSem, osWaitForever);
 		PTD->PDOR |= MASK(PTD2_Pin);
-		osDelay(10); //10us orginal = 0x11
+		osDelay(10); //10us orginal 
 	
-		//Off trigger after 10 seconds
+		//Off trigger after 10 microseconds
 		PTD->PDOR &= ~MASK(PTD2_Pin);
 		osDelay(10);
 	}
@@ -322,6 +308,7 @@ void tBrainThread (void *argument) {
 				osSemaphoreRelease(selfDriveSem);
 				break;
 			default:
+				stop();
 				break;
 		}
 	}
@@ -333,7 +320,7 @@ int main (void) {
 		SystemCoreClockUpdate();
 	setupUART2(BAUD_RATE);
 	initLED();
-	initPWM();  //Can please check if this PWM is for the motors or the sound?
+	initPWM();  
 	initUltrasonic();
 	offLEDModules();
   osKernelInitialize();                 // Initialize CMSIS-RTOS
@@ -344,7 +331,6 @@ int main (void) {
 	soundSem = osSemaphoreNew(1, 1, NULL);
 	selfDriveSem = osSemaphoreNew(1, 0, NULL);
 	triggerSem = osSemaphoreNew(1, 0, NULL);
-	myMutex = osMutexNew(NULL);
 	
 	ultrasonicMessage = osMessageQueueNew(1, sizeof(uint32_t), NULL);
 

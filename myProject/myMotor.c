@@ -186,7 +186,7 @@ void uturn() {
 	stop();
 	osDelay(2000);
 	forward();
-	osDelay(400); //300 cmi
+	osDelay(400);
 	stop();
 	osDelay(2000);
 	selfRight();
@@ -201,28 +201,24 @@ void uturn() {
 	osDelay(700);
 	stop();
 	osDelay(2000);
-	selfRight(); //may need change
+	selfRight(); 
 	osDelay(700);
 	stop();
 	osDelay(1000);
 	selfForward(); 
+<<<<<<< HEAD
+	osDelay(550); 
+  stop();
+	osDelay(2000);
+	turnLeft();
+	osDelay(450); 
+=======
 	osDelay(450); // change from 650
   //stop();
 	//osDelay(2000);
 	turnLeft();
 	osDelay(400); //was 400 need more left //lab 500 90degree
+>>>>>>> 7e2d86702705a254dcec9640e5b271ab36721906
 	stop();
 	
-
-//	selfLeft();
-//	shortForward();
-//	selfRight();
-//	shortForward();
-//	selfRight();
-//	longForward();
-//	selfRight();
-//	shortForward();
-//	selfRight();
-//	shortForward();
-//	selfLeft();
 }
