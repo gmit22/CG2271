@@ -72,17 +72,14 @@ void flashRED_Stationery() {
 void runningGREEN_Moving(int k) {
 	offFrontLED();
 	
-	//for (; k<8; ++k) {
 		if (k < 4) {
 			PTE -> PSOR |= MASK(green_led[k]);
 			osDelay(DELAY_RUN);
 			PTE -> PCOR |= MASK(green_led[k]);
-		//osDelay(DELAY_RUN);
 		} else if (k >= 4) {
 			PTB -> PSOR |= MASK(green_led[k]);
 			osDelay(DELAY_RUN);
 			PTB -> PCOR |= MASK(green_led[k]);
-			//osDelay(DELAY_RUN);
 		}
 }
 

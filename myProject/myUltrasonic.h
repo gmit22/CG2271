@@ -14,22 +14,6 @@
 
 #define MASK(x) (1 << (x))
 
-extern volatile uint32_t read;
-
-//extern volatile int ready;
-//extern volatile uint32_t start;
-//extern volatile uint32_t startRecord;
-extern float value;
-
-extern volatile int orange;
-
-//extern volatile uint16_t end;
-extern volatile uint32_t counter;
-extern volatile uint32_t read;
-
 void initUltrasonic(void);
-void ultrasonicTrigger(void);
-void readUltrasonic(void);
-void TPM0_IRQHandler(void);
 
 #endif

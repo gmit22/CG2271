@@ -9,12 +9,6 @@ int tempo = 144;
 
 volatile int endRaceSong =1; 
 
-//volatile int endRaceSong = 1;
-
-// notes of the moledy followed by the duration.
-// a 4 means a quarter note, 8 an eighteenth , 16 sixteenth, so on
-// !!negative numbers are used to represent dotted notes,
-// so -4 means a dotted quarter note, that is, a quarter plus an eighteenth!!
 
 int starWarsMelody [] = {
 	NOTE_A4, 500, NOTE_A4, 500, NOTE_A4, 500, NOTE_A4, 350, NOTE_C5, 150, NOTE_A4, 500, NOTE_F4, 350, 
@@ -31,7 +25,7 @@ int starWarsMelody [] = {
 };
 
 int startSong [] = {
-	  //Super Mario Connected Song
+	//Super Mario Connected Song
   NOTE_C5,-4, NOTE_G4,-4, NOTE_E4,4, //45
   NOTE_A4,-8, NOTE_B4,-8, NOTE_A4,-8, NOTE_GS4,-8, NOTE_AS4,-8, NOTE_GS4,-8,
   NOTE_G4,8, NOTE_D4,8, NOTE_E4,-2,  
@@ -40,7 +34,6 @@ int startSong [] = {
 int endSong[] = {
 
   // Jigglypuff's Song
-  // Score available at https://musescore.com/user/28109683/scores/5044153
   
   NOTE_D5,-4, NOTE_A5,8, NOTE_FS5,8, NOTE_D5,8,
   NOTE_E5,-4, NOTE_FS5,8, NOTE_G5,4,
@@ -60,7 +53,6 @@ int endSong[] = {
   
 };
 
-//1 nop takes 1 cycle? So 1 delay is 1/48 microsec
 
 static void delay100x(volatile uint32_t nof) {
 	for(int i =0;i<100;i++) {
@@ -70,13 +62,11 @@ static void delay100x(volatile uint32_t nof) {
 
 
 void playRaceSong() {
-	//if (endRaceSong){
+
 	int notes = sizeof(starWarsMelody) / sizeof(starWarsMelody[0]);
 
 	int noteDuration = 0, period = 0;
-	
-	//while(1) {
-		
+
 		for(int i = 0; i<notes; i+=2) {
 			if (endRaceSong==0)break;
 			// calculates the duration of each note
@@ -85,15 +75,10 @@ void playRaceSong() {
 			TPM0->MOD = period;
 			TPM0_C0V = period / 4; //12.5% duty cycle
 			osDelay (noteDuration/2);
-			//delay100x(25*noteDuration);
 			TPM0->MOD = 0;
 			TPM0_C0V = 0;
 			osDelay (noteDuration/2);
-			//delay100x(24*noteDuration);
-		//}
-	}
-		
-	//}
+		}
 }
 
 void playConnectSong () {
@@ -104,8 +89,6 @@ void playConnectSong () {
 	int divider = 0, noteDuration = 0;
 
 	uint32_t period;
-
-	//while(1) {
 
 		for(int i = 0; i<notes; i+=2) {
 			divider = startSong[i + 1];
@@ -124,13 +107,11 @@ void playConnectSong () {
 			delay100x(2*10*noteDuration);
 		}
 
-	//}
 }
 
 
 void playEndSong() {
 	osSemaphoreAcquire(soundSem, osWaitForever);
-	//endRaceSong =0;
 	int notes = sizeof(endSong) / sizeof(endSong[0]);
 
 	// This calculates the duration of a whole note in ms (60s/tempo)*4 beats.
@@ -139,7 +120,6 @@ void playEndSong() {
 	int divider = 0, noteDuration = 0;
 
 	uint32_t period;
-
 
 		for(int i = 0; i<notes; i+=2) {
 			divider = endSong[i + 1];
@@ -152,11 +132,9 @@ void playEndSong() {
 			period = TO_MOD(endSong[i]);
 			TPM0->MOD = period;
 			TPM0_C0V = period / 8;
-			//delay100x(2*9*noteDuration);
 			osDelay (noteDuration/2);
 			TPM0->MOD = 0;
 			TPM0_C0V = 0;
-			//delay100x(2*10*noteDuration);
 			osDelay (noteDuration/2);
 
 		}

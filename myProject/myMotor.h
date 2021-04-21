@@ -1,18 +1,6 @@
 #ifndef myMotor_H
 #define myMotor_H
 
-//typedef enum state {
-//	FORWARD,
-//	REVERSE,
-//	RIGHT,
-//	LEFT,
-//	LEFTFW,
-//	LEFTRV,
-//	RIGHTFW,
-//	RIGHTRV,
-//	HALT
-//} state_t;
-
 void stop(void);
 void forward(void);
 void reverse(void);
