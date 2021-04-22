@@ -28,7 +28,6 @@
 #define CONNECTION 11
 #define SELF_DRIVE 12
 
-//uint8_t rx_data;
 char isMove = 0;
 volatile uint32_t end = 0x0000;
 uint32_t distance = 0x00;
@@ -69,8 +68,7 @@ const osThreadAttr_t highPriority = {
 void bluetoothConnected() {
 	flashGREEN_Twice();
 	userSignal = STOP;
-	//Code to play a sound when bluetooth is connected to the Freedom Board.
-	//playConnectSong(); 
+	playConnectSong(); 
 }
 
 void PORTD_IRQHandler() {
@@ -317,13 +315,13 @@ void tBrainThread (void *argument) {
 int main (void) {
  
   //System Initialization 
-		SystemCoreClockUpdate();
+	SystemCoreClockUpdate();
 	setupUART2(BAUD_RATE);
 	initLED();
 	initPWM();  
 	initUltrasonic();
 	offLEDModules();
-  osKernelInitialize();                 // Initialize CMSIS-RTOS
+  	osKernelInitialize();                 // Initialize CMSIS-RTOS
 	
 	//Initialize Semaphores
 	brainSem = osSemaphoreNew(1, 0, NULL);
@@ -342,11 +340,11 @@ int main (void) {
 	osThreadNew(tSelfDriveThread, NULL, NULL);
 	osThreadNew(tTriggerThread, NULL, NULL);
 	osThreadNew(tAudio, NULL, NULL);
-  osThreadNew(tRearLED, NULL, NULL);
+  	osThreadNew(tRearLED, NULL, NULL);
 	osThreadNew(tFrontLED, NULL, NULL);
 	osThreadNew(tMotorThread, NULL, NULL);
 	osThreadNew(tUltrasonicThread, NULL, NULL);
 	
-  osKernelStart();                      // Start thread execution
-  for (;;) {}
+  	osKernelStart();                      // Start thread execution
+  	for (;;) {}
 }
