@@ -288,7 +288,7 @@ void tBrainThread (void *argument) {
 		
 		switch(userSignal) {
 			case END:
-				endRaceSong = 0; 
+				playEndRaceSong(); 
 				break;
 			case NORTH:
 			case SOUTH:
