@@ -12,4 +12,4 @@ The aim of the project is to design and build a RTOS-based robotic car that will
 
 5.  Play different sounds/tunes according to the car's status
 
-The project specifications can be found [here](documents/Project Specifications_AY2021SEM2.pdf)
+The project specifications can be found [here](https://github.com/AlexanderTanJunAn/CG2271/blob/main/documents/Project%20Specifications_AY2021SEM2.pdf)
