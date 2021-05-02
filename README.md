@@ -1,7 +1,7 @@
 # CG2271 RTOS-based Robotic Car
 
 <p align = "center">
-  <img src="documents/CG2271Robot.png">
+  <img src="documents/CG2271Robot.jpeg">
   </p>
 
 ## Introduction
