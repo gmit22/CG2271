@@ -1,5 +1,9 @@
 # CG2271 RTOS-based Robotic Car
 
+<p align = "center">
+  <img src="documents/CG2271Robot.png">
+  </p>
+
 ## Introduction
 
 The aim of the project is to design and build a RTOS-based robotic car that will be controlled via Bluetooth by an Android Application. To simulate a multi-threaded environment in a RTOS based system, the robotic car must be able to fulfil the following features:
