@@ -20,7 +20,7 @@ The aim of the project is to design and build a RTOS-based robotic car that will
 
 The project specifications can be found [here](https://github.com/AlexanderTanJunAn/CG2271/blob/main/documents/Project%20Specifications_AY2021SEM2.pdf)!
 
-The team video can be found [here](https://youtu.be/i1rt4jdiWIk)!
+The team's video can be found [here](https://youtu.be/i1rt4jdiWIk)!
 
 ## RTOS Architecture
 
